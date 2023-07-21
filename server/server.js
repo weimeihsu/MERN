@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -12,4 +13,5 @@ app.get('/api',(req,res)=>{
     res.json({"users":['userOne', 'userTwo', 'userThreee']})
 })
 // listen for request
-app.listen(5000,()=>{ console.log('Server started on port 5000')})
+app.listen(process.env.PORT,()=>{ console.log('Server started on port 5000')})
+
