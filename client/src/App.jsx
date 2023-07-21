@@ -24,7 +24,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
         {(typeof backendData.users === 'undefined') ? (
-          <p>homepage</p>
+          <p>homepage!!</p>
         ):(backendData.users.map((user,i)=>(
           <p key={i}>{user}</p>
         )))}
