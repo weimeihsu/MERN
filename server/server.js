@@ -22,8 +22,6 @@ mongoose.connect(process.env.MONGO_URI)
         console.log(error)
     })
 
-app.get('/api',(req,res)=>{
-    res.json({"users":['userOne', 'userTwo', 'userThreee']})
-})
+
 
 
