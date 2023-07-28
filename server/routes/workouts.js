@@ -13,6 +13,10 @@ router.get('/:id', (req, res)=>{
 })
 
 // POST a new item
+const workout = new Workout({
+    title: "title",
+    load:0
+})
 router.post('/', async (req, res)=>{
     const title = req.body
 
