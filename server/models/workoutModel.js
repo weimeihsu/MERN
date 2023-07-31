@@ -4,7 +4,10 @@ const Schema = mongoose.Schema
 
 const workoutSchema = new Schema({
     title: String,
-    load: Number
+    load: {
+        type: Number,
+        required:true
+    }
 }, {timestamps: true})
 
-module.exports = mongoose.model('Workout', workoutSchema)
+module.exports = mongoose.model('workoutSchema', workoutSchema)
