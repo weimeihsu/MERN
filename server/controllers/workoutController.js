@@ -23,6 +23,15 @@ const getSingleWorkout = async(req, res)=>{
 const createWorkout = async(req, res) =>{
 
     const {title, load} = req.body
+
+    let emptyFields = []
+
+    if(!load){
+        return emptyFields.push('load')
+    }
+    if(emptyFields.length>0){
+        return res.status(404).json({error: 'please fill in ' + emptyFields})
+    }
     // add item to mongodb
     try{
         const workout = await workoutSchema.create({title, load})

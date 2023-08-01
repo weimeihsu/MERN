@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Routers from './routers/Routers'
+import WorkoutForm from './pages/WorkoutForm'
 
 function App() {
   const [backendData, setBackendData] = useState([{}])
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
     {/* outlet will replace the routes */}
+      <WorkoutForm/>
       <Routers/>
     </>
   )
