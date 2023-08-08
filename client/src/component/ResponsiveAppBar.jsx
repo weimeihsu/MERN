@@ -7,16 +7,18 @@ import IconButton from '@mui/material/IconButton'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import Typography from '@mui/material/Typography'
 import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
-import MenuItem from '@mui/material/MenuItem'
+
 import AdbIcon from '@mui/icons-material/Adb'
 
 // slice
 import { useSelector } from 'react-redux'
 import { selectNavList } from '../features/list/navListSlide'
+
 
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -51,7 +53,6 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -92,11 +93,9 @@ function ResponsiveAppBar() {
               }}
             >
               {navList.map((navitem, idx) => (
-                <NavLink key={idx} onClick={handleCloseNavMenu} to={navitem.path} className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "active" : ""
-              }>
-                  <Typography textAlign="center">{navitem.name}</Typography>
-                </NavLink>
+                <MenuItem key={idx} onClick={handleCloseNavMenu} to={navitem.path}>
+                  <NavLink>{navitem.name}</NavLink>
+                </MenuItem>
               ))}
             </Menu>
           </Box>
@@ -126,15 +125,16 @@ function ResponsiveAppBar() {
                 key={idx}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              >{navitem.name}
+              >
+                <NavLink to={navitem.path}>{navitem.name}</NavLink>
               </Button>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <AccountCircle />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, color: 'white' }} size="large">
+                <AccountCircle/>
               </IconButton>
             </Tooltip>
             <Menu
@@ -154,11 +154,9 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <NavLink key={setting} onClick={handleCloseUserMenu} className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "active" : ""
-              }>
-                  <Typography textAlign="center">{setting}</Typography>
-                </NavLink>
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <NavLink>{setting}</NavLink>
+                </MenuItem>
               ))}
             </Menu>
           </Box>
