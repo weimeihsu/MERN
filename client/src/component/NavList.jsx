@@ -1,15 +1,15 @@
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { selectNavbarList } from '../features/record/recordSlide'
+import { selectNavList } from '../features/list/navListSlide'
 
 
-const NavBar = () => {
-  const navBarList = useSelector(selectNavbarList)
+const NavList = () => {
+  const navList = useSelector(selectNavList)
 
     return ( 
       <>
         <nav className="navBar">
-        {navBarList.map((navitem, idx)=>( 
+        {navList.map((navitem, idx)=>( 
           <NavLink className="navItem" to={navitem.path} key={idx}>
             {navitem.name}
           </NavLink>
@@ -20,4 +20,4 @@ const NavBar = () => {
     );
 }
  
-export default NavBar;
+export default NavList;

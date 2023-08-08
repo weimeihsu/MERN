@@ -1,19 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    navBarList:[
+    navList:[
         {id:1, path:'/', name:'homepage'},
         {id:2, path:'/recordform', name:'record form'}
+    ],
+    settingList:[
+        {path:'/'}
     ]
 }
 
-export const navBarListSlice = createSlice({
-    name:'navbar',
+export const navListSlice = createSlice({
+    name:'navlist',
     initialState,
     reducers:{
 
     }
 })
 
-export const selectNavbarList = state => state.navBarLisState.navBarList
-export default navBarListSlice.reducer
+export const selectNavList = state => state.navLisState.navList
+export default navListSlice.reducer

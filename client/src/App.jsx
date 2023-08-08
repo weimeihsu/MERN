@@ -1,13 +1,13 @@
-import './App.css'
+
 import Routers from './routers/Routers'
-import NavBar from './component/NavBar'
+
+import ResponsiveAppBar from './component/ResponsiveAppBar'
 
 function App() {
   
   return (
     <>
-      <NavBar/>
-     
+      <ResponsiveAppBar/>
       <Routers/>
     </>
   )

@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import  navBarListSlice  from '../features/record/recordSlide'
+import  navListSlice  from '../features/list/navListSlide'
 
 export const store = configureStore({
   reducer: {
-    navBarLisState: navBarListSlice,
+    navLisState: navListSlice,
   },
 })
