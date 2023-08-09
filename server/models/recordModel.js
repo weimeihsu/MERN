@@ -4,8 +4,8 @@ const Schema = mongoose.Schema
 
 const recordSchema = new Schema({
     title: String,
-    load: {
-        type: Number,
+    category: {
+        type: String,
         required:true
     }
 }, {timestamps: true})

@@ -2,11 +2,12 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     navList:[
-        {id:1, path:'/', name:'homepage'},
-        {id:2, path:'/recordform', name:'record form'}
+        {id:1, path:'/', name:'Homepage'},
+        {id:2, path:'/recordform', name:'List & Form'}
     ],
-    settingList:[
-        {path:'/'}
+    accountList:[
+        {path:'/account', name:'Account'},
+        {path:'/lougout', name:'Logout'},
     ]
 }
 
@@ -19,4 +20,5 @@ export const navListSlice = createSlice({
 })
 
 export const selectNavList = state => state.navLisState.navList
+export const selectAccountList = state => state.navLisState.accountList
 export default navListSlice.reducer

@@ -17,31 +17,31 @@ import AdbIcon from '@mui/icons-material/Adb'
 
 // slice
 import { useSelector } from 'react-redux'
-import { selectNavList } from '../features/list/navListSlide'
-
+import { selectNavList, selectAccountList } from '../features/list/navListSlide'
 
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
   const navList = useSelector(selectNavList)
+  const accountList = useSelector(selectAccountList)
 
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null)
+  const [anchorElUser, setAnchorElUser] = useState(null)
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
+    setAnchorElNav(event.currentTarget)
   };
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+    setAnchorElUser(event.currentTarget)
   };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+    setAnchorElNav(null)
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setAnchorElUser(null)
   };
 
   return (
@@ -110,7 +110,6 @@ function ResponsiveAppBar() {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -153,9 +152,9 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                <NavLink>{setting}</NavLink>
+              {accountList.map((accountItem, idx) => (
+                <MenuItem key={idx} onClick={handleCloseUserMenu}>
+                <NavLink>{accountItem.name}</NavLink>
                 </MenuItem>
               ))}
             </Menu>

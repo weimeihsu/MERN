@@ -1,13 +1,9 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
-// const cors = require('cors')
 const recordRoute = require('./routes/recordRoutes')
 
-// app.use(cors({
-//     origin: 'http://localhost:5173'
-// }))
-// express app
+
 const app = express()
 
 // middleware. this will look into the requst body and parsin json format
