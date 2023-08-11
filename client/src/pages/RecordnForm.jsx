@@ -16,26 +16,19 @@ import IconButton from '@mui/material/IconButton'
 import DeleteIcon from '@mui/icons-material/Delete'
 import Typography from '@mui/material/Typography'
 
+import RecordForm from '../component/recordForm'
+
 const RecordnForm = () => {
     const [records, setRecords] = useState(null)
-    const [title, setTitle] = useState()
-    const [category, setCategory] = useState('')
     
-    const changeTitle = (e) => {
-        setTitle(e.target.value);
-    }
-
-    const changeCategory = (e) => {
-        setCategory(e.target.value);
-    }
-    useEffect(()=>{
-        const fetchRecords = async() =>{
-            const res = await fetch('/api/records')
-            const data = await res.json()
-            setRecords(data)
-        }
-        fetchRecords()
-    },[]) 
+    // useEffect(()=>{
+    //     const fetchRecords = async() =>{
+    //         const res = await fetch('/api/records')
+    //         const data = await res.json()
+    //         setRecords(data)
+    //     }
+    //     fetchRecords()
+    // },[]) 
     
     return ( 
     <Box sx={{ flexGrow: 1 }}>
@@ -62,24 +55,7 @@ const RecordnForm = () => {
             </Grid>
             <Grid item xs={4}>
             <h1>Form</h1>
-                <Box component="form">
-                <TextField id="outlined-basic" label="Movie name" variant="outlined" size="small" sx={{mb:2}} fullWidth required onChange={changeTitle} value={title}/>
-                    <FormControl fullWidth size="small" sx={{mb:2}}>
-                        <InputLabel id="demo-simple-select-label">Category</InputLabel>
-                        <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={category}
-                        label="Category"
-                        onChange={changeCategory}
-                        >
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <Button variant="contained">Add</Button>
-                </Box>
+                <RecordForm/>
             </Grid>
             </Grid>
     </Box>

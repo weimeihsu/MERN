@@ -1,12 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 const initialState = {
-    records:[{title:'Snow White', category:'Cartoon',id:0},
-           {title:'The Secret Garden', category:'Comedy',id:1},
-           {title:'Lion King', category:'Drama',id:2},
-           {title:'Little Mermaid', category:'Thriller',id:3},
-           {title:'Spider man', category:'Action',id:4},
-           {title:'What Happened to Wed', category:'Action',id:5}],
+    records:[],
+    status:'idle', //'idle' | 'loading' | 'succeded' | 'failed'
+    error:null
   } 
 
 export const recordsSlice = createSlice({

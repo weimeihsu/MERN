@@ -17,7 +17,7 @@ import AdbIcon from '@mui/icons-material/Adb'
 
 // slice
 import { useSelector } from 'react-redux'
-import { selectNavList, selectAccountList } from '../features/list/navListSlide'
+import { selectNavList, selectAccountList } from '../features/list/navListSlice'
 
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
