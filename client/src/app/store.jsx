@@ -5,6 +5,6 @@ import recordSlice from '../features/recordCRUD/recordSlice'
 export const store = configureStore({
   reducer: {
     navLisState: navListSlice,
-    recordsState:recordSlice
+    recordsState: recordSlice
   },
 })

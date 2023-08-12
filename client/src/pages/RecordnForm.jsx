@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import Grid from '@mui/material/Grid'
 
 import Box from '@mui/material/Box'
@@ -17,9 +18,12 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import Typography from '@mui/material/Typography'
 
 import RecordForm from '../component/recordForm'
+import { selectAllRecords } from '../features/recordCRUD/recordSlice'
 
 const RecordnForm = () => {
-    const [records, setRecords] = useState(null)
+    const dispatch = useDispatch()
+    const records = useSelector(selectAllRecords)
+
     
     // useEffect(()=>{
     //     const fetchRecords = async() =>{
