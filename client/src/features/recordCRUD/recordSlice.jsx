@@ -9,6 +9,9 @@ const initialState = {
     error:null
   } 
 
+// export const fetchRecords = createAsyncThunk('records/fetchRecords', ()=>{
+//     return fetch(FETCH_URL).then(res=>res.json()).catch(err=>err.message)
+// }) 
 export const fetchRecords = createAsyncThunk('records/fetchRecords', async()=>{
     try{
         const res = await axios.get(FETCH_URL)
@@ -32,13 +35,20 @@ export const recordsSlice = createSlice({
             state.status='loading'
         })
         .addCase(fetchRecords.fulfilled, (state, action)=>{
+            console.log(action)
             state.status='succeeded'
             state.records=action.payload
+        })
+        .addCase(fetchRecords.rejected, (state)=>{
+            state.status='failed'
+            state.error='something went wrong'
         })
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { addRecord } = recordsSlice.actions
-export const selectAllRecords = state => state.recordsState.records
+// export const { addRecord } = recordsSlice.actions
+// export const { selectAllRecords } = state => state.recordsState.records
+// export const { getFetchStatus } = state => state.recordsState.status
+// export const { getFetchError } = state => state.recordsState.error
 export default recordsSlice.reducer

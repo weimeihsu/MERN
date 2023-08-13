@@ -17,14 +17,9 @@ import AdbIcon from '@mui/icons-material/Adb'
 
 // slice
 import { useSelector } from 'react-redux'
-import { selectNavList, selectAccountList } from '../features/list/navListSlice'
-
-
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
-  const navList = useSelector(selectNavList)
-  const accountList = useSelector(selectAccountList)
+  const {navList, accountList} = useSelector(store=>store.navListSlice)
 
   const [anchorElNav, setAnchorElNav] = useState(null)
   const [anchorElUser, setAnchorElUser] = useState(null)

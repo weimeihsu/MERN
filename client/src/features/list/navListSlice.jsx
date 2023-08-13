@@ -19,6 +19,6 @@ export const navListSlice = createSlice({
     }
 })
 
-export const selectNavList = state => state.navLisState.navList
-export const selectAccountList = state => state.navLisState.accountList
+// export const selectNavList = state => state.navLisState.navList
+// export const selectAccountList = state => state.navLisState.accountList
 export default navListSlice.reducer
