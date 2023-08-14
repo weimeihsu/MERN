@@ -12,6 +12,27 @@ const initialState = {
 // export const fetchRecords = createAsyncThunk('records/fetchRecords', ()=>{
 //     return fetch(FETCH_URL).then(res=>res.json()).catch(err=>err.message)
 // }) 
+
+export const postRecords = createAsyncThunk('records/postRecords', async(data, FETCH_URL) =>{
+    const config = {
+        method: 'post',
+        url: '',
+        headers: {
+            'Content-Type': ''
+        },
+        data: data
+    }
+
+    const response = await axios(config)
+            .then(function (response) {
+            console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+        return response.data
+})
+
 export const fetchRecords = createAsyncThunk('records/fetchRecords', async()=>{
     try{
         const res = await axios.get(FETCH_URL)
@@ -47,7 +68,7 @@ export const recordsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-// export const { addRecord } = recordsSlice.actions
+export const { addRecord } = recordsSlice.actions
 // export const { selectAllRecords } = state => state.recordsState.records
 // export const { getFetchStatus } = state => state.recordsState.status
 // export const { getFetchError } = state => state.recordsState.error
