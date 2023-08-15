@@ -13,26 +13,6 @@ const initialState = {
 //     return fetch(FETCH_URL).then(res=>res.json()).catch(err=>err.message)
 // }) 
 
-export const postRecords = createAsyncThunk('records/postRecords', async(data, FETCH_URL) =>{
-    const config = {
-        method: 'post',
-        url: '',
-        headers: {
-            'Content-Type': ''
-        },
-        data: data
-    }
-
-    const response = await axios(config)
-            .then(function (response) {
-            console.log(JSON.stringify(response.data));
-            })
-            .catch(function (error) {
-            console.log(error);
-            });
-        return response.data
-})
-
 export const fetchRecords = createAsyncThunk('records/fetchRecords', async()=>{
     try{
         const res = await axios.get(FETCH_URL)
@@ -44,12 +24,7 @@ export const fetchRecords = createAsyncThunk('records/fetchRecords', async()=>{
 export const recordsSlice = createSlice({
     name:'records',
     initialState,
-    reducers:{
-        addRecord:(state, action)=>{
-            const {title, category} = action.payload
-        },
-
-    },
+    reducers:{ },
     extraReducers(builder) {
         builder
         .addCase(fetchRecords.pending, (state, action)=>{

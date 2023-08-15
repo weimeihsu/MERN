@@ -3,7 +3,6 @@ const express = require('express')
 const mongoose = require('mongoose')
 const recordRoute = require('./routes/recordRoutes')
 
-
 const app = express()
 const PORT = process.env.PORT
 // middleware. this will look into the requst body and parsin json format

@@ -35,6 +35,9 @@ const RecordnForm = () => {
                     <Typography variant="body2">
                         {recordItem.category}
                     </Typography>
+                    <Typography variant="body2">
+                        {recordItem.createdAt}
+                    </Typography>
                 </CardContent>
                 <CardActions>
                     <IconButton aria-label="add to favorites">

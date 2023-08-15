@@ -1,5 +1,6 @@
 const recordSchema = require('../models/recordModel')
 const mongoose = require('mongoose')
+
 // get all records
 const getAllRecords = async(req, res)=>{
     const records = await recordSchema.find({}).sort({createdAt: -1})
@@ -26,6 +27,9 @@ const createRecord = async(req, res) =>{
 
     let emptyFields = []
 
+    if(!title){
+        return emptyFields.push('title')
+    }
     if(!category){
         return emptyFields.push('category')
     }
@@ -36,8 +40,8 @@ const createRecord = async(req, res) =>{
     try{
         const record = await recordSchema.create({title, category})
         res.status(200).json(record)
-    } catch(error){
-        res.status(400).json({error:error.message})
+    } catch(err){
+        res.status(400).json(err.message)
     }
 }
 // delete a single record

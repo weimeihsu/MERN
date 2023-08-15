@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { addRecord } from '../features/recordCRUD/recordSlice'
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
@@ -10,9 +8,10 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
 const RecordForm = () => {
-    const dispatch = useDispatch()
+
     const [title, setTitle] = useState('')
     const [category, setCategory] = useState('')
+    const [error, setError] = useState(null)
     
     const changeTitle = (e) => {
         setTitle(e.target.value);
@@ -21,18 +20,31 @@ const RecordForm = () => {
     const changeCategory = (e) => {
         setCategory(e.target.value)
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        if(title && category){
-            dispatch(addRecord({
-                title, category
-            }))
+        console.log('submit')
+        const signleRecord = {title, category}
+       
+        const res = await fetch('/api/records', {
+            method: 'POST',
+            body: JSON.stringify(signleRecord),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        const json = await res.json()
+        if(!res.ok){
+            setError(json.error)
+        }
+        if(res.ok){
             setTitle('')
             setCategory('')
-        }  
+            setError(null)
+        }         
+            
     }
     return ( 
-        <Box component="form" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
                 <TextField id="outlined-basic" label="Movie name" variant="outlined" size="small" sx={{mb:2}} fullWidth required onChange={changeTitle} value={title}/>
                     <FormControl fullWidth size="small" sx={{mb:2}}>
                         <InputLabel id="demo-simple-select-label">Category</InputLabel>
@@ -42,14 +54,17 @@ const RecordForm = () => {
                         value={category}
                         label="Category"
                         onChange={changeCategory}
+                        required
                         >
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                        <MenuItem value={'Action'}>Action</MenuItem>
+                        <MenuItem value={'Drama'}>Drama</MenuItem>
+                        <MenuItem value={'Fiction'}>Fiction</MenuItem>
+                        <MenuItem value={'Fantasy'}>Fantasy</MenuItem>
                         </Select>
                     </FormControl>
-                <Button variant="contained">Add</Button>
-        </Box>
+                <Button variant="contained" type='submit'>Add</Button>
+                {error && <div>{error}</div>}
+        </form>
      );
 }
 
