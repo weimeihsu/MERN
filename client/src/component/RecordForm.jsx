@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import Box from '@mui/material/Box'
+import { useDispatch } from 'react-redux'
+import { addRecord } from '../features/recordCRUD/recordSlice'
+
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
@@ -8,6 +10,8 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
 const RecordForm = () => {
+
+    const dispatch = useDispatch()
 
     const [title, setTitle] = useState('')
     const [category, setCategory] = useState('')
@@ -37,6 +41,7 @@ const RecordForm = () => {
             setError(json.error)
         }
         if(res.ok){
+            dispatch(addRecord({title, category}))
             setTitle('')
             setCategory('')
             setError(null)

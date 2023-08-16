@@ -21,9 +21,10 @@ const RecordnForm = () => {
     useEffect(()=>{
         dispatch(fetchRecords())
     },[])
+
     return ( 
     <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={4}>
+        <Grid container spacing={4}>
             <Grid item xs={8}>
             <h1>Records</h1>
             {records && records.map(recordItem=>(
@@ -45,13 +46,13 @@ const RecordnForm = () => {
                     </IconButton>
                 </CardActions>
             </Card>
-             ))} 
+                ))} 
             </Grid>
             <Grid item xs={4}>
             <h1>Form</h1>
                 <RecordForm/>
             </Grid>
-            </Grid>
+        </Grid>
     </Box>
      )
 }

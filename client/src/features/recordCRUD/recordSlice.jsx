@@ -24,7 +24,14 @@ export const fetchRecords = createAsyncThunk('records/fetchRecords', async()=>{
 export const recordsSlice = createSlice({
     name:'records',
     initialState,
-    reducers:{ },
+    reducers:{
+        addRecord: (state, action)=>{
+            const { title, category } = action.payload
+            const newRecord = { title, category }
+            
+            state.records = [newRecord, ...state.records]
+        }
+    },
     extraReducers(builder) {
         builder
         .addCase(fetchRecords.pending, (state, action)=>{
