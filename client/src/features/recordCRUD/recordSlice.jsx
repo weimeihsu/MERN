@@ -28,7 +28,6 @@ export const recordsSlice = createSlice({
         addRecord: (state, action)=>{
             const { title, category } = action.payload
             const newRecord = { title, category }
-            
             state.records = [newRecord, ...state.records]
         }
     },
