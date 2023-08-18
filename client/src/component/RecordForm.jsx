@@ -16,7 +16,6 @@ const RecordForm = () => {
     const [title, setTitle] = useState('')
     const [category, setCategory] = useState('')
     const [error, setError] = useState(null)
-    
     const changeTitle = (e) => {
         setTitle(e.target.value);
     }
@@ -26,7 +25,7 @@ const RecordForm = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('submit')
+        
         const signleRecord = {title, category}
        
         const res = await fetch('/api/records', {
@@ -36,18 +35,19 @@ const RecordForm = () => {
                 'Content-Type':'application/json'
             }
         })
-        const json = await res.json()
+        const newRecord = await res.json()
         if(!res.ok){
             setError(json.error)
         }
         if(res.ok){
-            dispatch(addRecord({title, category}))
+            dispatch(addRecord({newRecord}))
             setTitle('')
             setCategory('')
             setError(null)
         }         
             
     }
+
     return ( 
         <form onSubmit={handleSubmit}>
                 <TextField id="outlined-basic" label="Movie name" variant="outlined" size="small" sx={{mb:2}} fullWidth required onChange={changeTitle} value={title}/>

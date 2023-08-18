@@ -26,9 +26,12 @@ export const recordsSlice = createSlice({
     initialState,
     reducers:{
         addRecord: (state, action)=>{
-            const { title, category } = action.payload
-            const newRecord = { title, category }
+            const { newRecord } = action.payload
             state.records = [newRecord, ...state.records]
+        },
+        deleteRecord: (state, action)=>{
+            const { theRecord } = action.payload
+            state.records = state.records.filter(item=>item._id !== theRecord._id)
         }
     },
     extraReducers(builder) {
@@ -49,7 +52,7 @@ export const recordsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addRecord } = recordsSlice.actions
+export const { addRecord, deleteRecord } = recordsSlice.actions
 // export const { selectAllRecords } = state => state.recordsState.records
 // export const { getFetchStatus } = state => state.recordsState.status
 // export const { getFetchError } = state => state.recordsState.error
