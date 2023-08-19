@@ -17,7 +17,7 @@ const style = {
     pb: 4
   };
 
-const OpenModal = () => {
+const OpenModal = ({recordItem}) => {
 
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
@@ -35,8 +35,9 @@ const OpenModal = () => {
         aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
+                
                 <h1>Update the Record</h1>
-                <RecordForm/>
+                <RecordForm recordID={recordItem._id}/>
             </Box>
         </Modal>
         </>  

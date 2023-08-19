@@ -9,7 +9,7 @@ import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
-const RecordForm = () => {
+const RecordForm = ({recordID}) => {
 
     const dispatch = useDispatch()
 
@@ -50,6 +50,7 @@ const RecordForm = () => {
 
     return ( 
         <form onSubmit={handleSubmit}>
+            <p>{recordID}</p>
                 <TextField id="outlined-basic" label="Movie name" variant="outlined" size="small" sx={{mb:2}} fullWidth required onChange={changeTitle} value={title}/>
                     <FormControl fullWidth size="small" sx={{mb:2}}>
                         <InputLabel id="demo-simple-select-label">Category</InputLabel>

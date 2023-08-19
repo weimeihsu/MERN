@@ -56,8 +56,7 @@ const Records = () => {
                     <IconButton size="small" aria-label="delete" onClick={() => handleRemove(recordItem._id)}>
                         <DeleteIcon fontSize="inherit"/>
                     </IconButton>
-                    
-                    <OpenModal/>
+                    <OpenModal key={recordItem._id} recordItem={recordItem}/>
                 </CardActions>
                 </Box>  
             </Card>
