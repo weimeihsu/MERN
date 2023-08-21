@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addRecord } from '../features/recordCRUD/recordSlice'
 
 import InputLabel from '@mui/material/InputLabel'
@@ -9,9 +9,9 @@ import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
-const RecordForm = ({recordID}) => {
-
+const RecordForm = ({recordID, recordTitle, recordCategory}) => {
     const dispatch = useDispatch()
+    const {categories} = useSelector(store => store.recordSlice)
 
     const [title, setTitle] = useState('')
     const [category, setCategory] = useState('')
@@ -19,7 +19,6 @@ const RecordForm = ({recordID}) => {
     const changeTitle = (e) => {
         setTitle(e.target.value);
     }
-
     const changeCategory = (e) => {
         setCategory(e.target.value)
     }
@@ -51,6 +50,8 @@ const RecordForm = ({recordID}) => {
     return ( 
         <form onSubmit={handleSubmit}>
             <p>{recordID}</p>
+            <p>{recordTitle}</p>
+            <p>{recordCategory}</p>
                 <TextField id="outlined-basic" label="Movie name" variant="outlined" size="small" sx={{mb:2}} fullWidth required onChange={changeTitle} value={title}/>
                     <FormControl fullWidth size="small" sx={{mb:2}}>
                         <InputLabel id="demo-simple-select-label">Category</InputLabel>
@@ -62,10 +63,9 @@ const RecordForm = ({recordID}) => {
                         onChange={changeCategory}
                         required
                         >
-                        <MenuItem value={'Action'}>Action</MenuItem>
-                        <MenuItem value={'Drama'}>Drama</MenuItem>
-                        <MenuItem value={'Fiction'}>Fiction</MenuItem>
-                        <MenuItem value={'Fantasy'}>Fantasy</MenuItem>
+                            {categories.map((categoryItem, idx)=>(
+                                <MenuItem key={idx} value={categoryItem}>{categoryItem}</MenuItem>
+                            ))}
                         </Select>
                     </FormControl>
                 <Button variant="contained" type='submit'>Add</Button>

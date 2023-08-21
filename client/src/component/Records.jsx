@@ -23,7 +23,7 @@ const Records = () => {
     },[])
 
     const handleRemove = async (id) =>{
-        const res = await fetch('/api/records/' + id, {
+        const res = await fetch(`/api/records/${id}`, {
             method: 'DELETE'
         })
         const theRecord = await res.json()

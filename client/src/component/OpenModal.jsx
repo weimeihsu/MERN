@@ -37,7 +37,7 @@ const OpenModal = ({recordItem}) => {
             <Box sx={style}>
                 
                 <h1>Update the Record</h1>
-                <RecordForm recordID={recordItem._id}/>
+                <RecordForm recordID={recordItem._id} recordTitle={recordItem.title} recordCategory={recordItem.category}/>
             </Box>
         </Modal>
         </>  

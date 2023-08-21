@@ -5,6 +5,7 @@ const FETCH_URL = '/api/records'
 
 const initialState = {
     records:[],
+    categories:['Action','Drama','Fiction','Fantasy'],
     status:'idle', //'idle' | 'loading' | 'succeded' | 'failed'
     error:null
   } 
@@ -32,6 +33,9 @@ export const recordsSlice = createSlice({
         deleteRecord: (state, action)=>{
             const { theRecord } = action.payload
             state.records = state.records.filter(item=>item._id !== theRecord._id)
+        },
+        updateRecord: ()=>{
+            
         }
     },
     extraReducers(builder) {
