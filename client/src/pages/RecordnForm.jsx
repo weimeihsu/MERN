@@ -14,7 +14,6 @@ const RecordnForm = () => {
                 <Records/>
             </Grid>
             <Grid item xs={4}>
-                <h1>Form</h1>
                 <RecordForm/>
             </Grid>
         </Grid>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addRecord } from '../features/recordCRUD/recordSlice'
+import { PropTypes } from 'prop-types'
 
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
@@ -9,12 +10,12 @@ import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
-const RecordForm = ({recordID, recordTitle, recordCategory}) => {
+const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText}) => {
     const dispatch = useDispatch()
     const {categories} = useSelector(store => store.recordSlice)
 
-    const [title, setTitle] = useState('')
-    const [category, setCategory] = useState('')
+    const [title, setTitle] = useState(recordTitle)
+    const [category, setCategory] = useState(recordCategory)
     const [error, setError] = useState(null)
     const changeTitle = (e) => {
         setTitle(e.target.value);
@@ -48,6 +49,8 @@ const RecordForm = ({recordID, recordTitle, recordCategory}) => {
     }
 
     return ( 
+        <>
+        <h1>{formTitle}</h1>
         <form onSubmit={handleSubmit}>
             <p>{recordID}</p>
             <p>{recordTitle}</p>
@@ -68,10 +71,16 @@ const RecordForm = ({recordID, recordTitle, recordCategory}) => {
                             ))}
                         </Select>
                     </FormControl>
-                <Button variant="contained" type='submit'>Add</Button>
+                <Button variant="contained" type='submit'>{btnText}</Button>
                 {error && <div>{error}</div>}
         </form>
+        </>
      );
+}
+
+RecordForm.defaultProps = {
+    formTitle: 'Create Record',
+    btnText:'Create',
 }
 
 export default RecordForm;
