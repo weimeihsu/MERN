@@ -31,7 +31,7 @@ const OpenModal = ({recordItem}) => {
         <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
+        aria-labelledby="modal-recordForm"
         aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
