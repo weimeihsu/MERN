@@ -33,9 +33,6 @@ const Records = () => {
         }
     }
 
-    const openUpdate = (recordItem) => {
-        console.log(recordItem)
-    }
     return ( 
         <>
         {records && records.map(recordItem=>(
@@ -56,7 +53,7 @@ const Records = () => {
                     <IconButton size="small" aria-label="delete" onClick={() => handleRemove(recordItem._id)}>
                         <DeleteIcon fontSize="inherit"/>
                     </IconButton>
-                    <OpenModal key={recordItem._id} recordItem={recordItem}/>
+                    <OpenModal key={recordItem._id} {...recordItem}/>
                 </CardActions>
                 </Box>  
             </Card>

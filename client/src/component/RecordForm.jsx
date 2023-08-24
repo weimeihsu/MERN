@@ -13,22 +13,28 @@ const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText})
     const dispatch = useDispatch()
     const {categories} = useSelector(store => store.recordSlice)
     const [createMode, setCreateMode] = useState(true)
-    const handleMode = () =>{
-        setCreateMode(current => !current)
-    }
-    const [title, setTitle] = useState('')
-    const [category, setCategory] = useState('')
+
+    const id = recordID ? recordID : undefined
+    const [title, setTitle] = useState(id ? recordTitle : '')
+    const [category, setCategory] = useState(id ? recordCategory :'')
     const [error, setError] = useState(null)
+    
     const changeTitle = (e) => {
         setTitle(e.target.value);
     }
     const changeCategory = (e) => {
         setCategory(e.target.value)
     }
-    const handleSubmit = async (e) => {
+    // condition. add or update
+    const handleSubmit = (recordID) => {
+        recordID ? handleUpdate() : handleCreate()                
+    }
+
+    // add record
+    const handleCreate = async (e) => {
         e.preventDefault()
         
-        const signleRecord = {title, category}
+        const signleRecord = { title, category }
        
         const res = await fetch('/api/records', {
             method: 'POST',
@@ -37,14 +43,42 @@ const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText})
                 'Content-Type':'application/json'
             }
         })
-        setCategory('')
-        setTitle('')
+        
         const newRecord = await res.json()
         if(!res.ok){
-            setError(json.error)
+            setError(newRecord.error)
         }
         if(res.ok){
+            setCategory('')
+            setTitle('')
+            setError(null)
             dispatch(addRecord({newRecord}))
+        }               
+    }
+
+    // update record
+    const handleUpdate = async (e) => {
+        e.preventDefault()
+        
+        const signleRecord = { title, category }
+       
+        const res = await fetch(`/api/records/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(signleRecord),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        
+        const newRecord = await res.json()
+        if(!res.ok){
+            setError(newRecord.error)
+        }
+        if(res.ok){
+            setCategory('')
+            setTitle('')
+            setError(null)
+            // dispatch(updateRecord({newRecord}))
         }               
     }
 
@@ -52,14 +86,14 @@ const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText})
         <>
         <h1>{formTitle}</h1>
         <form onSubmit={handleSubmit}>
-            <Button onClick={handleMode}>{recordID}</Button>
+
             <p>{recordTitle}</p>
             <p>{recordCategory}</p>
                 <TextField id="outlined-basic" label="Movie name" variant="outlined" size="small" sx={{mb:2}} fullWidth required onChange={changeTitle} value={createMode ? title : recordTitle}/>
                     <FormControl fullWidth size="small" sx={{mb:2}}>
-                        <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                        <InputLabel id="movie-category">Category</InputLabel>
                         <Select
-                        labelId="demo-simple-select-label"
+                        labelId="movie-category"
                         id="demo-simple-select"
                         value={category}
                         label="Category"

@@ -56,7 +56,7 @@ export const recordsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addRecord, deleteRecord } = recordsSlice.actions
+export const { addRecord, deleteRecord, updateRecord } = recordsSlice.actions
 // export const { selectAllRecords } = state => state.recordsState.records
 // export const { getFetchStatus } = state => state.recordsState.status
 // export const { getFetchError } = state => state.recordsState.error
