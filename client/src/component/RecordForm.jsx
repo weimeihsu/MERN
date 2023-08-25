@@ -12,6 +12,7 @@ import Button from '@mui/material/Button'
 const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText}) => {
     const dispatch = useDispatch()
     const {categories} = useSelector(store => store.recordSlice)
+    // this state is for button and title text
     const [createMode, setCreateMode] = useState(true)
 
     const id = recordID ? recordID : undefined
@@ -26,19 +27,18 @@ const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText})
         setCategory(e.target.value)
     }
     // condition. add or update
-    const handleSubmit = (recordID) => {
-        recordID ? handleUpdate() : handleCreate()                
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        handleCreate({title, category})
+        // recordID ? updateRecord() : createRecord()                
     }
 
-    // add record
-    const handleCreate = async (e) => {
-        e.preventDefault()
+    // create record
+    const handleCreate = async (record) => {
         
-        const signleRecord = { title, category }
-       
         const res = await fetch('/api/records', {
             method: 'POST',
-            body: JSON.stringify(signleRecord),
+            body: JSON.stringify(record),
             headers: {
                 'Content-Type':'application/json'
             }
@@ -57,28 +57,25 @@ const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText})
     }
 
     // update record
-    const handleUpdate = async (e) => {
-        e.preventDefault()
-        
-        const signleRecord = { title, category }
-       
+    const handleUpdate = async (record) => {
+
         const res = await fetch(`/api/records/${id}`, {
             method: 'PUT',
-            body: JSON.stringify(signleRecord),
+            body: JSON.stringify(record),
             headers: {
                 'Content-Type':'application/json'
             }
         })
         
-        const newRecord = await res.json()
+        const theRecord = await res.json()
         if(!res.ok){
-            setError(newRecord.error)
+            setError(theRecord.error)
         }
         if(res.ok){
             setCategory('')
             setTitle('')
             setError(null)
-            // dispatch(updateRecord({newRecord}))
+            // dispatch(updateRecord({theRecord}))
         }               
     }
 

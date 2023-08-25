@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux'
-import { addRecord, updateRecord } from '../features/recordCRUD/recordSlice'
+import { deleteRecord, addRecord, updateRecord } from '../features/recordCRUD/recordSlice'
 
 export const saveRecord = (record) => {
-    record.id ? updateRecord(record) : createRecord(record)
+    record.id ? handleUpdate(record) : handleCreate(record)
 }
 
-export const createRecord = async (record) => {
+export const handleCreate = async (record) => {
         const dispatch = useDispatch()
         const res = await fetch('/api/records', {
             method: 'POST',
@@ -19,7 +19,7 @@ export const createRecord = async (record) => {
         dispatch(addRecord({newRecord}))     
 }
 
-export const updateRecord = async (record) => {
+export const handleUpdate = async (record) => {
        
         const res = await fetch(`/api/records/${record.id}`, {
             method: 'PUT',
@@ -32,3 +32,4 @@ export const updateRecord = async (record) => {
         const newRecord = await res.json()
         dispatch(updateRecord({newRecord}))    
 }
+
