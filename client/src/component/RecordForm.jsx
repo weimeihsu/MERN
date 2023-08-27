@@ -29,12 +29,12 @@ const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText})
     // condition. add or update
     const handleSubmit = (e) => {
         e.preventDefault()
-        handleCreate({title, category})
-        // recordID ? updateRecord() : createRecord()                
+        // recordCreate({title, category})
+        recordID ? recordUpdate({title, category}) : recordCreate({title, category})                
     }
 
     // create record
-    const handleCreate = async (record) => {
+    const recordCreate = async (record) => {
         
         const res = await fetch('/api/records', {
             method: 'POST',
@@ -57,7 +57,7 @@ const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText})
     }
 
     // update record
-    const handleUpdate = async (record) => {
+    const recordUpdate = async (record) => {
 
         const res = await fetch(`/api/records/${id}`, {
             method: 'PUT',
