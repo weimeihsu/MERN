@@ -86,7 +86,7 @@ const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText})
 
             <p>{recordTitle}</p>
             <p>{recordCategory}</p>
-                <TextField id="outlined-basic" label="Movie name" variant="outlined" size="small" sx={{mb:2}} fullWidth required onChange={changeTitle} value={createMode ? title : recordTitle}/>
+                <TextField id="outlined-basic" label="Movie name" variant="outlined" size="small" sx={{mb:2}} fullWidth required onChange={changeTitle} value={title}/>
                     <FormControl fullWidth size="small" sx={{mb:2}}>
                         <InputLabel id="movie-category">Category</InputLabel>
                         <Select
