@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
-const recordRoute = require('./routes/recordRoutes')
+const recordRoutes = require('./routes/recordRoutes')
 
 const app = express()
 const PORT = process.env.PORT
@@ -9,7 +9,7 @@ const PORT = process.env.PORT
 app.use(express.json())
 
 // routes
-app.use('/api/records', recordRoute)
+app.use('/api/records', recordRoutes)
 
 // connect to mongo DB
 mongoose.connect(process.env.MONGO_URI)

@@ -66,17 +66,17 @@ const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText})
                 'Content-Type':'application/json'
             }
         })
-        
-        const theRecord = await res.json()
-        if(!res.ok){
-            setError(theRecord.error)
-        }
-        if(res.ok){
-            setCategory('')
-            setTitle('')
-            setError(null)
-            // dispatch(updateRecord({theRecord}))
-        }               
+        console.log(res.json())
+        // const theRecord = await res.json()
+        // if(!res.ok){
+        //     setError(theRecord.error)
+        // }
+        // if(res.ok){
+        //     setCategory('')
+        //     setTitle('')
+        //     setError(null)
+        //     // dispatch(updateRecord({theRecord}))
+        // }               
     }
 
     return ( 
@@ -95,7 +95,7 @@ const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText})
                         value={category}
                         label="Category"
                         onChange={changeCategory}
-                        required
+                        
                         >
                             {categories.map((categoryItem, idx)=>(
                                 <MenuItem key={idx} value={categoryItem}>{categoryItem}</MenuItem>
