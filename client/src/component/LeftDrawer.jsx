@@ -49,34 +49,34 @@ const LeftDrawer = () => {
                     Logo
                 </Typography>
                 <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, color: 'white' }} size="large">
-                <AccountCircle/>
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {accountList.map((accountItem, idx) => (
-                <MenuItem key={idx} onClick={handleCloseUserMenu}>
-                <NavLink>{accountItem.name}</NavLink>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+                <Tooltip title="Open account">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, color: 'white' }} size="large">
+                    <AccountCircle/>
+                </IconButton>
+                </Tooltip>
+                <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+                >
+                {accountList.map((accountItem, idx) => (
+                    <MenuItem key={idx} onClick={handleCloseUserMenu}>
+                    <NavLink>{accountItem.name}</NavLink>
+                    </MenuItem>
+                ))}
+                </Menu>
+                </Box>
                 </Toolbar>
             </AppBar>
             <Drawer
