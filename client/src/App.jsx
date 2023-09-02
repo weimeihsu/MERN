@@ -32,7 +32,7 @@ const Main = styled('main', {
 
 function App() {
   const {navList, accountList} = useSelector(store=>store.navListSlice)
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   }
@@ -45,7 +45,7 @@ function App() {
             <Toolbar />
             <Routers/>
         </Main>
-      </Box>
+    </Box>
   )
 }
 

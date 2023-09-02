@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -20,7 +20,7 @@ const SiteList = () => {
                 </ListItemButton>
               </ListItem>
             ))}
-          </List>
+        </List>
         </>
      );
 }

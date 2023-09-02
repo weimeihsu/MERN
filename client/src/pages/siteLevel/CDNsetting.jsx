@@ -1,11 +1,13 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 
 const CDNsetting = () => {
-    const [age, setAge] = useState('');
+    const { siteID } = useParams()
+    const [age, setAge] = useState('')
     return ( 
         <>
         <h1>CDNsetting</h1>

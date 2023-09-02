@@ -11,8 +11,8 @@ const initialState = {
         {path:'/lougout', name:'Logout'},
     ],
     siteList:[
-        {id:'siteID123', name: 'example123.com'}, 
-        {id:'siteID456', name: 'example456.com'}
+        {id:'site123', name: 'example123.com'}, 
+        {id:'site456', name: 'example456.com'}
     ]
 }
 

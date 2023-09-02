@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"
 
 const DnsRecords = () => {
-    const { id } = useParams()
+    const { siteID } = useParams()
     return ( 
         <>
         <h1>DNS records</h1>
-        <p>sitename - {id}</p>
+        <p>sitename - { siteID }</p>
         </>  
      );
 }
