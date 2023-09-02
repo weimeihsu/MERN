@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
-import { Link, Outlet } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import LeftDrawer from '../component/LeftDrawer'
 
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -11,16 +12,17 @@ const SiteList = () => {
         <>
         <h1>Sitelist</h1>
         <List>
-            {siteList.map((navitem, idx) => (
-                <ListItem key={idx} disablePadding>
+            {siteList.map(navitem => (
+                <ListItem key={navitem.id} disablePadding>
                 <ListItemButton>
-                  <Link to={navitem.id}>
+                  <Link to={navitem.id} >
                     <ListItemText primary={navitem.name} />
                   </Link>  
                 </ListItemButton>
               </ListItem>
             ))}
         </List>
+        
         </>
      );
 }

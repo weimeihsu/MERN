@@ -5,7 +5,7 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 
-const CDNsetting = () => {
+const CDNmgm = () => {
     const { siteID } = useParams()
     const [age, setAge] = useState('')
     return ( 
@@ -31,4 +31,4 @@ const CDNsetting = () => {
      );
 }
  
-export default CDNsetting;
+export default CDNmgm;

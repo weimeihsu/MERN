@@ -4,21 +4,28 @@ import HomePage from '../pages/Homepage'
 import SiteList from '../pages/SiteList'
 import DnsRecords from '../pages/siteLevel/DnsRecords'
 import DomainList from '../pages/siteLevel/DomainList'
-import CDNsetting from '../pages/siteLevel/CdnSetting'
+import CDNmgm from '../pages/siteLevel/CDNmgm'
 import SiteOutlet from '../pages/siteLevel/SiteOutlet'
 
-const Routers = () =>{
+const Routers = () => {
     return (
-    <Routes>
-        <Route index element={<HomePage/> } />
-        <Route path="recordform" element={<RecordnForm/> } />
-        <Route path="sitelist" element={<SiteList/>} />
-        <Route path="sitelist/:siteID" element={<SiteOutlet/> } />
-    </Routes>
+        <Routes>
+            <Route index element={<HomePage/> } />
+            <Route path="recordform" element={<RecordnForm/> } />
+            <Route path="sitelist" element={<SiteList/>} />
+            <Route path="sitelist/:siteID" element={<SiteOutlet/> } />
+        </Routes>
     )
 }
-export default Routers
 
-{/* 
-<Route path="domainlist" element={<DomainList/>}/>
-<Route path="cdn-setting" element={<CDNsetting/>}/>   */}
+// const siteRouters = () => {
+//     return (
+//         <Routes>
+//             <Route path="dns" element={<DnsRecords/> } />
+//             <Route path="domainlist" element={<DomainList/>}/>
+//             <Route path="cdn-mgm" element={<CDNmgm/>}/> 
+//         </Routes>
+//     )
+// }
+export default Routers 
+

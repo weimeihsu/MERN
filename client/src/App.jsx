@@ -31,7 +31,7 @@ const Main = styled('main', {
 }));
 
 function App() {
-  const {navList, accountList} = useSelector(store=>store.navListSlice)
+  const {accountList, accountLevelMenu, siteLevelMenu} = useSelector(store=>store.navListSlice)
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -40,7 +40,7 @@ function App() {
   return (
     <Box sx={{ display: 'flex' }}>
       <NavBar accountList={accountList} toggleDrawer={toggleDrawer} open={open}/>
-      <LeftDrawer navList={navList} drawerWidth={drawerWidth} toggleDrawer={toggleDrawer} open={open}/>
+      <LeftDrawer accountLevelMenu={accountLevelMenu} siteLevelMenu={siteLevelMenu} drawerWidth={drawerWidth} toggleDrawer={toggleDrawer} open={open}/>
         <Main open={open}>
             <Toolbar />
             <Routers/>
