@@ -32,6 +32,10 @@ const Main = styled('main', {
 
 function App() {
   const {accountList, accountLevelMenu, siteLevelMenu} = useSelector(store=>store.navListSlice)
+  const [siteID, setSiteID] = useState(null)
+  const getSiteID = (id) => {
+    setSiteID(id)
+  }
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
