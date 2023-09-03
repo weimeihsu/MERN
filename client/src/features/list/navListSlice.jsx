@@ -15,6 +15,7 @@ const initialState = {
         {path:'/account', name:'Account'},
         {path:'/lougout', name:'Logout'},
     ],
+    siteID: '123',
     siteList:[
         {id:'site123', name: 'example123.com'}, 
         {id:'site456', name: 'example456.com'}
@@ -25,9 +26,12 @@ export const navListSlice = createSlice({
     name:'navlist',
     initialState,
     reducers:{
+        getSiteID: (state, action)=>{
+            const { theSiteID } = action.payload
+            state.siteID = theSiteID
+        }
     }
 })
 
-// export const selectNavList = state => state.navLisState.navList
-// export const selectAccountList = state => state.navLisState.accountList
+export const { getSiteID } = navListSlice.actions
 export default navListSlice.reducer

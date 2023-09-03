@@ -1,5 +1,4 @@
 import Routers from './routers/Routers'
-import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
 import Box from '@mui/material/Box'
@@ -31,7 +30,7 @@ const Main = styled('main', {
 }));
 
 function App() {
-  const {accountList, accountLevelMenu, siteLevelMenu} = useSelector(store=>store.navListSlice)
+
   const [siteID, setSiteID] = useState(null)
   const getSiteID = (id) => {
     setSiteID(id)
@@ -43,8 +42,8 @@ function App() {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <NavBar accountList={accountList} toggleDrawer={toggleDrawer} open={open}/>
-      <LeftDrawer accountLevelMenu={accountLevelMenu} siteLevelMenu={siteLevelMenu} drawerWidth={drawerWidth} toggleDrawer={toggleDrawer} open={open}/>
+      <NavBar toggleDrawer={toggleDrawer} open={open}/>
+      <LeftDrawer drawerWidth={drawerWidth} toggleDrawer={toggleDrawer} open={open}/>
         <Main open={open}>
             <Toolbar />
             <Routers/>

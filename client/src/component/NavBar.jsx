@@ -3,7 +3,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import MenuIcon from '@mui/icons-material/Menu'
 import IconButton from '@mui/material/IconButton'
-import AccountMenu from './AccountMenu'
+import ProfileMenu from './ProfileMenu'
 
 import { styled } from '@mui/material/styles'
 const drawerWidth = 240;
@@ -25,7 +25,8 @@ const Nav = styled(AppBar, {
     }),
   }));
 
-const NavBar = ({accountList, toggleDrawer, open}) => {
+const NavBar = ({toggleDrawer, open}) => {
+  
     return ( 
         <Nav position="fixed" open={open}>
             <Toolbar>
@@ -41,7 +42,7 @@ const NavBar = ({accountList, toggleDrawer, open}) => {
                 <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
                     Logo
                 </Typography>
-                <AccountMenu accountList={accountList}/>
+                <ProfileMenu/>
             </Toolbar>
         </Nav>
      );
