@@ -35,7 +35,7 @@ const NavBar = ({toggleDrawer, open}) => {
                 aria-label="open drawer"
                 onClick={toggleDrawer}
                 edge="start"
-                sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                sx={{ mr: 2 }}
             >
                  <MenuIcon />
                 </IconButton>

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    accountLevelMenu:[
+    mainMenu:[
         {id:1, path:'/', name:'Homepage'},
         {id:2, path:'/sitelist', name:'Site List'},
         {id:3, path:'/recordform', name:'List & Form'}
@@ -15,7 +15,7 @@ const initialState = {
         {path:'/account', name:'Account'},
         {path:'/lougout', name:'Logout'},
     ],
-    siteID: '123',
+    selectedSiteObj: null,
     siteList:[
         {id:'site123', name: 'example123.com'}, 
         {id:'site456', name: 'example456.com'}
@@ -26,12 +26,15 @@ export const navListSlice = createSlice({
     name:'navlist',
     initialState,
     reducers:{
-        getSiteID: (state, action)=>{
-            const { theSiteID } = action.payload
-            state.siteID = theSiteID
+        getSiteObj: (state, action)=>{
+            const { selectedSiteObj } = action.payload
+            state.selectedSiteObj = selectedSiteObj
+        },
+        clearSiteObj: (state, action)=>{
+            state.selectedSiteObj = null
         }
     }
 })
 
-export const { getSiteID } = navListSlice.actions
+export const { getSiteObj,clearSiteObj } = navListSlice.actions
 export default navListSlice.reducer

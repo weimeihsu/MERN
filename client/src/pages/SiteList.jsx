@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { getSiteID } from '../features/list/navListSlice'
+import { getSiteObj } from '../features/list/navListSlice'
 import { Link } from 'react-router-dom'
 
 import List from '@mui/material/List'
@@ -9,8 +9,8 @@ import ListItemText from '@mui/material/ListItemText'
 const SiteList = () => {
   const dispatch = useDispatch()
   const {siteList} = useSelector(store=>store.navListSlice)
-  const handleGetSiteID = (theSiteID) =>{
-    dispatch(getSiteID({theSiteID}))
+  const handleGetSiteObj = (selectedSiteObj) =>{
+    dispatch(getSiteObj({selectedSiteObj}))
   }
     return ( 
         <>
@@ -18,7 +18,7 @@ const SiteList = () => {
         <List>
             {siteList.map(navitem => (
                 <ListItem key={navitem.id} disablePadding>
-                <ListItemButton onClick={()=>handleGetSiteID(navitem.id)}>
+                <ListItemButton onClick={()=>handleGetSiteObj(navitem)}>
                   <Link to={navitem.id} >
                     <ListItemText primary={navitem.name} />
                   </Link>  
