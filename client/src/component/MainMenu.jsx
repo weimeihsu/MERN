@@ -12,7 +12,7 @@ import ListItemText from '@mui/material/ListItemText'
 
 const MainMenu = () => {
     const { mainMenu } = useSelector(store=>store.navListSlice)
-    const [ selectedID, setSelectedID ] = useState(null)
+    const [ selectedID, setSelectedID ] = useState(1)
     const handlesSelected = (id) =>{
     setSelectedID(id)
     }

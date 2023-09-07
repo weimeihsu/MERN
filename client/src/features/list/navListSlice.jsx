@@ -11,6 +11,7 @@ const initialState = {
         {id:2, path:'/domainlist', name:'Domain List'},
         {id:3, path:'/cdn-mgm', name:'CDN Management'}
     ],
+    selectedMenuID:null,
     accountList:[
         {path:'/account', name:'Account'},
         {path:'/lougout', name:'Logout'},
@@ -32,6 +33,12 @@ export const navListSlice = createSlice({
         },
         clearSiteObj: (state, action)=>{
             state.selectedSiteObj = null
+            // state.selectedMenuID = state.mainMenu.id[1]
+            // navigate to site list page
+        },
+        handleSelectedMenuID: (state, action)=>{
+            const { theMenuID } = action.payload
+            state.selectedMenuID = theMenuID
         }
     }
 })
