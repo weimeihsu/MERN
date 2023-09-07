@@ -12,20 +12,13 @@ const Routers = () => {
         <Routes>
             <Route index element={<HomePage/> } />
             <Route path="recordform" element={<RecordnForm/> } />
-            <Route path="sitelist" element={<SiteList/>} />
-            <Route path="sitelist/:siteID" element={<SiteOutlet/> } />
+            <Route path="sitelist" >
+                <Route index element={<SiteList/>} />
+                <Route path=":siteID" element={<SiteOutlet/> } />
+            </Route>
         </Routes>
     )
 }
 
-// const siteRouters = () => {
-//     return (
-//         <Routes>
-//             <Route path="dns" element={<DnsRecords/> } />
-//             <Route path="domainlist" element={<DomainList/>}/>
-//             <Route path="cdn-mgm" element={<CDNmgm/>}/> 
-//         </Routes>
-//     )
-// }
 export default Routers 
 

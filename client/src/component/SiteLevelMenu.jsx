@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { clearSiteObj } from '../features/list/navListSlice'
@@ -15,6 +15,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 
 const SiteLevelMenu = ({selectedSiteObj}) => {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const { siteLevelMenu } = useSelector(store=>store.navListSlice)
     const [ selectedID, setSelectedID ] = useState(null)
@@ -23,6 +24,7 @@ const SiteLevelMenu = ({selectedSiteObj}) => {
     }
     const backToMain = () => {
       dispatch(clearSiteObj())
+      navigate("./")
     }
     return ( 
       <>
