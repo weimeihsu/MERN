@@ -7,9 +7,9 @@ const initialState = {
         {id:3, path:'/recordform', name:'List & Form'}
     ],
     siteLevelMenu:[
-        {id:1, path:'/dns', name:'DNS'},
-        {id:2, path:'/domainlist', name:'Domain List'},
-        {id:3, path:'/cdn-mgm', name:'CDN Management'}
+        {id:1, path:'dns', name:'DNS'},
+        {id:2, path:'domainlist', name:'Domain List'},
+        {id:3, path:'cdn', name:'CDN Management'}
     ],
     selectedMenuID:null,
     accountList:[

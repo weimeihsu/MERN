@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { clearSiteObj } from '../features/list/navListSlice'
@@ -15,6 +15,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 
 const SiteLevelMenu = ({selectedSiteObj}) => {
+    const { siteID } = useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { siteLevelMenu } = useSelector(store=>store.navListSlice)
@@ -39,7 +40,7 @@ const SiteLevelMenu = ({selectedSiteObj}) => {
             <IconButton onClick={backToMain}>
               <ChevronLeftIcon />
             </IconButton>
-            <Typography sx={{ flexGrow: 1 }}>{selectedSiteObj.name}</Typography>
+            <Typography sx={{ flexGrow: 1 }}>{selectedSiteObj.name}{siteID}</Typography>
           </Toolbar>
           <Divider />
 
@@ -47,7 +48,7 @@ const SiteLevelMenu = ({selectedSiteObj}) => {
             {siteLevelMenu.map(navitem => (
                 <ListItem key={navitem.id} disablePadding>
                 <ListItemButton selected={selectedID === navitem.id} onClick={()=>handlesSelected(navitem.id)}>
-                  <NavLink to={navitem.path}>
+                  <NavLink to={`${siteID}/${navitem.path}`}>
                     <ListItemText primary={navitem.name} />
                   </NavLink>  
                 </ListItemButton>
