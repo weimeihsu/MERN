@@ -19,7 +19,7 @@ const SiteList = () => {
             {siteList.map(navitem => (
                 <ListItem key={navitem.id} disablePadding>
                 <ListItemButton onClick={()=>handleGetSiteObj(navitem)}>
-                  <Link to={navitem.id} >
+                  <Link to={`${navitem.id}/dns`} >
                     <ListItemText primary={navitem.name} />
                   </Link>  
                 </ListItemButton>

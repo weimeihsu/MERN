@@ -7,7 +7,6 @@ import SiteLevelMenu from './SiteLevelMenu'
 
 const LeftDrawer = ({drawerWidth, open}) => {
   const { selectedSiteObj } = useSelector(store=>store.navListSlice)
-  // const theSiteName = siteID ? siteID : undefined
 
     return ( 
         <Drawer

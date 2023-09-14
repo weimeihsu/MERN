@@ -4,13 +4,14 @@ import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
 
 const CDNmgm = () => {
     const { siteID } = useParams()
     const [age, setAge] = useState('')
     return ( 
         <>
-        <h1>CDNsetting</h1>
+        <h1>CDN Management{siteID}</h1>
         <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Age</InputLabel>
@@ -19,7 +20,7 @@ const CDNmgm = () => {
             id="demo-simple-select"
             value={age}
             label="Age"
-            onChange={handleChange}
+            // onChange={handleChange}
           >
             <MenuItem value={10}>Ten</MenuItem>
             <MenuItem value={20}>Twenty</MenuItem>

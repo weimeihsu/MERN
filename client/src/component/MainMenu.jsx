@@ -11,8 +11,8 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 
 const MainMenu = () => {
-    const { mainMenu } = useSelector(store=>store.navListSlice)
-    const [ selectedID, setSelectedID ] = useState(1)
+    const { mainMenu, selectedMainMenuID } = useSelector(store=>store.navListSlice)
+    const [ selectedID, setSelectedID ] = useState(selectedMainMenuID)
     const handlesSelected = (id) =>{
     setSelectedID(id)
     }

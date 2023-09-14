@@ -1,7 +1,7 @@
-import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
-import { clearSiteObj } from '../features/list/navListSlice'
+import { backToMain } from '../features/list/navListSlice'
 
 import Divider from '@mui/material/Divider'
 import Toolbar from '@mui/material/Toolbar'
@@ -15,7 +15,6 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 
 const SiteLevelMenu = ({selectedSiteObj}) => {
-    const { siteID } = useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { siteLevelMenu } = useSelector(store=>store.navListSlice)
@@ -23,9 +22,9 @@ const SiteLevelMenu = ({selectedSiteObj}) => {
     const handlesSelected = (id) =>{
     setSelectedID(id)
     }
-    const backToMain = () => {
-      dispatch(clearSiteObj())
-      navigate("./")
+    const handleBackToMain = () => {
+      dispatch(backToMain())
+      navigate("./sitelist")
     }
     return ( 
       <>
@@ -37,10 +36,10 @@ const SiteLevelMenu = ({selectedSiteObj}) => {
               px: [1]
             }}
           >
-            <IconButton onClick={backToMain}>
+            <IconButton onClick={handleBackToMain}>
               <ChevronLeftIcon />
             </IconButton>
-            <Typography sx={{ flexGrow: 1 }}>{selectedSiteObj.name}{siteID}</Typography>
+            <Typography sx={{ flexGrow: 1 }}>{selectedSiteObj.name}</Typography>
           </Toolbar>
           <Divider />
 
@@ -48,7 +47,7 @@ const SiteLevelMenu = ({selectedSiteObj}) => {
             {siteLevelMenu.map(navitem => (
                 <ListItem key={navitem.id} disablePadding>
                 <ListItemButton selected={selectedID === navitem.id} onClick={()=>handlesSelected(navitem.id)}>
-                  <NavLink to={`${siteID}/${navitem.path}`}>
+                  <NavLink to={`/sitelist/${selectedSiteObj.id}/${navitem.path}`}>
                     <ListItemText primary={navitem.name} />
                   </NavLink>  
                 </ListItemButton>

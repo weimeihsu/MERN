@@ -6,21 +6,29 @@ const initialState = {
         {id:2, path:'/sitelist', name:'Site List'},
         {id:3, path:'/recordform', name:'List & Form'}
     ],
+    selectedMainMenuID: 1,
     siteLevelMenu:[
         {id:1, path:'dns', name:'DNS'},
         {id:2, path:'domainlist', name:'Domain List'},
         {id:3, path:'cdn', name:'CDN Management'}
     ],
-    selectedMenuID:null,
     accountList:[
         {path:'/account', name:'Account'},
         {path:'/lougout', name:'Logout'},
     ],
-    selectedSiteObj: null,
     siteList:[
-        {id:'site123', name: 'example123.com'}, 
-        {id:'site456', name: 'example456.com'}
-    ]
+        {id:'site123', 
+         name:'example123.com',
+         domains:[{id:'1', name:'domainanme.com'},
+                 {id:'2', name:'domainanme2.com'},
+        ]}, 
+        {id:'site456', 
+        name: 'example456.com',
+        domains:[{id:'1', name:'domainanme.com'},
+                 {id:'2', name:'domainanme2.com'},
+        ]}
+    ],
+    selectedSiteObj: null,
 }
 
 export const navListSlice = createSlice({
@@ -31,17 +39,13 @@ export const navListSlice = createSlice({
             const { selectedSiteObj } = action.payload
             state.selectedSiteObj = selectedSiteObj
         },
-        clearSiteObj: (state, action)=>{
+        backToMain: (state, action)=>{
             state.selectedSiteObj = null
-            // state.selectedMenuID = state.mainMenu.id[1]
+            state.selectedMainMenuID = state.mainMenu[1].id
             // navigate to site list page
-        },
-        handleSelectedMenuID: (state, action)=>{
-            const { theMenuID } = action.payload
-            state.selectedMenuID = theMenuID
         }
     }
 })
 
-export const { getSiteObj,clearSiteObj } = navListSlice.actions
+export const { getSiteObj, backToMain } = navListSlice.actions
 export default navListSlice.reducer
