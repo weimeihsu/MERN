@@ -6,7 +6,7 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
-import Divider from '@mui/material/Divider'
+
 const SiteList = () => {
   const dispatch = useDispatch()
   const {siteList} = useSelector(store=>store.navListSlice)
@@ -27,7 +27,6 @@ const SiteList = () => {
               </ListItem>
             ))}
         </List>
-        <Divider orientation="vertical" flexItem />
         </>
      );
 }

@@ -28,6 +28,15 @@ const initialState = {
                  {id:'2', name:'domainanme2.com'},
         ]}
     ],
+    rows:[
+        {id:'1', name:'domainanme.com'},
+        {id:'2', name:'domainanme2.com'},
+    ],
+    columns:[
+        { field: 'id', headerName: 'ID', width: 70 },
+        { field: 'name', headerName: 'Domain Name', width: 130 },
+        // { field: 'icon', headerName: 'Go to Page', width: 130 },
+      ],
     selectedSiteObj: null,
 }
 
