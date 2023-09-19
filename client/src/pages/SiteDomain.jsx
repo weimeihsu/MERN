@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import Grid from '@mui/material/Grid'
 import Collapse from '@mui/material/Collapse'
+import Container from '@mui/material/Container'
+import Box from '@mui/material/Box'
 
 import DomainTable from '../component/DomainTable'
 import SiteList from '../component/SiteList'
@@ -11,14 +12,12 @@ const SiteDomain = () => {
         setIsOpen(isOpen => !isOpen)
     }
     return ( 
-        <Grid container fluid sx={{height: '100vh'}}>
-            
-            <Grid item xs={4} sx={{ backgroundColor: 'primary.dark', padding: '16px' }} ><Collapse in={isOpen} orientation="horizontal"><SiteList/></Collapse></Grid>
+        <Container sx={{display: 'flex', flexDirection: 'row'}} disableGutters>
+            <Collapse in={isOpen} orientation="horizontal">
+            <Box sx={{ backgroundColor: 'primary.light', p:4 }} height="100vh"><SiteList/></Box></Collapse>
            
-            
-            
-            <Grid item xs={8} sx={{ padding: '16px' }} ><DomainTable toggleSitePanel={toggleSitePanel}/></Grid>
-        </Grid>
+            <Box sx={{ p:4,flexGrow: 1 }} ><DomainTable toggleSitePanel={toggleSitePanel}/></Box>
+        </Container>
      );
 }
  
