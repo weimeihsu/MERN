@@ -24,17 +24,14 @@ const initialState = {
         ]}, 
         {id:'site456', 
         name: 'example456.com',
-        domains:[{id:'1', name:'domainanme.com'},
-                 {id:'2', name:'domainanme2.com'},
+        domains:[{id:'3', name:'domainanme.com'},
+                 {id:'4', name:'domainanme2.com'},
         ]}
     ],
-    rows:[
-        {id:'1', name:'domainanme.com'},
-        {id:'2', name:'domainanme2.com'},
-    ],
+    rows:[],
     columns:[
-        { field: 'id', headerName: 'ID', width: 70 },
         { field: 'name', headerName: 'Domain Name', width: 130 },
+        { field: 'icon', headerName: 'Quick Action' },
         // { field: 'icon', headerName: 'Go to Page', width: 130 },
       ],
     selectedSiteObj: null,
@@ -52,6 +49,10 @@ export const navListSlice = createSlice({
             state.selectedSiteObj = null
             state.selectedMainMenuID = state.mainMenu[1].id
             // navigate to site list page
+        },
+        getDomainArray: (state, action)=>{
+            const { newArray } = state.siteList.domains
+            state.rows.push(newArray)
         }
     }
 })

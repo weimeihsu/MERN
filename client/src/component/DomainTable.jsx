@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 
 const DomainTable = ({toggleSitePanel}) => {
     const { columns, rows } = useSelector(store=>store.navListSlice)
+    
     return ( 
         <>
         <IconButton aria-label="toggle" onClick={toggleSitePanel}>
