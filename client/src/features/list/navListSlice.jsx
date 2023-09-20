@@ -9,8 +9,7 @@ const initialState = {
     selectedMainMenuID: 1,
     siteLevelMenu:[
         {id:1, path:'dns', name:'DNS'},
-        {id:2, path:'domainlist', name:'Domain List'},
-        {id:3, path:'cdn', name:'CDN Management'}
+        {id:2, path:'cdn', name:'CDN Management'}
     ],
     accountList:[
         {path:'/account', name:'Account'},
@@ -18,22 +17,16 @@ const initialState = {
     ],
     siteList:[
         {id:'site123', 
-         name:'example123.com',
-         domains:[{id:'1', name:'domainanme.com'},
-                 {id:'2', name:'domainanme2.com'},
+         name:'example.com',
+         domains:[{id:'1', name:'domain.example.com'},
+                 {id:'2', name:'cname.example.com'},
         ]}, 
         {id:'site456', 
-        name: 'example456.com',
-        domains:[{id:'3', name:'domainanme.com'},
-                 {id:'4', name:'domainanme2.com'},
+        name: 'travel.com',
+        domains:[{id:'3', name:'domain.travel.com'},
+                 {id:'4', name:'cname.travel.com'},
         ]}
     ],
-    rows:[],
-    columns:[
-        { field: 'name', headerName: 'Domain Name', width: 130 },
-        { field: 'icon', headerName: 'Quick Action' },
-        // { field: 'icon', headerName: 'Go to Page', width: 130 },
-      ],
     selectedSiteObj: null,
 }
 

@@ -3,7 +3,8 @@ import { useState } from 'react'
 
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
-import { styled } from '@mui/material/styles'
+import { styled, ThemeProvider } from '@mui/material/styles'
+import { theme } from './theme'
 
 import NavBar from './component/NavBar'
 import LeftDrawer from './component/LeftDrawer'
@@ -36,6 +37,7 @@ function App() {
   }
 
   return (
+    <ThemeProvider theme={theme}>
     <Box sx={{ display: 'flex' }}>
       <NavBar toggleDrawer={toggleDrawer} open={open}/>
       <LeftDrawer drawerWidth={drawerWidth} toggleDrawer={toggleDrawer} open={open}/>
@@ -44,6 +46,7 @@ function App() {
             <Routers/>
         </Main>
     </Box>
+    </ThemeProvider>
   )
 }
 

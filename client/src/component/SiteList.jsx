@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
+import { useState } from 'react'
 import { getSiteObj } from '../features/list/navListSlice'
 import { Link } from 'react-router-dom'
 
@@ -8,10 +9,11 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 
 const SiteList = () => {
-  const dispatch = useDispatch()
   const {siteList} = useSelector(store=>store.navListSlice)
-  const handleGetSiteObj = (selectedSiteObj) =>{
-    dispatch(getSiteObj({selectedSiteObj}))
+  const [selectedID, setSelectedID] = useState()
+  const dispatch = useDispatch()
+  const handleSelectedSite = (id) =>{
+    setSelectedID(id)
   }
     return ( 
         <>
@@ -19,10 +21,24 @@ const SiteList = () => {
         <List>
             {siteList.map(navitem => (
                 <ListItem key={navitem.id} disablePadding>
-                <ListItemButton onClick={()=>handleGetSiteObj(navitem)}>
-                  <Link to={`${navitem.id}/dns`} >
+                <ListItemButton selected={selectedID === navitem.id} onClick={()=>handleSelectedSite(navitem.id)} 
+                sx={{
+                    '&.Mui-selected': {
+                      backgroundColor: 'primary.main',
+                      borderRadius:1
+                    },
+                    '&.Mui-focusVisible': {
+                      backgroundColor: 'primary.main',
+                      borderRadius:1
+                    },
+                    ':hover': {
+                      backgroundColor: 'primary.main',
+                      borderRadius:1
+                    }
+                 }}>
+                  {/* <Link to={`${navitem.id}/dns`} > */}
                     <ListItemText primary={navitem.name} />
-                  </Link>  
+                  {/* </Link>   */}
                 </ListItemButton>
               </ListItem>
             ))}

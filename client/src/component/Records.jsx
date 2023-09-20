@@ -58,7 +58,7 @@ const Records = () => {
                 </CardActions>
                 </Box>  
             </Card>
-                ))} 
+        ))} 
         </>
      );
 }
