@@ -10,5 +10,20 @@ export const theme = createTheme({
             dark: '#1565c0',
             contrastText: '#fff',
         }
+    },
+    components:{
+        MuiListItemButton: {
+            styleOverrides: {
+                root:{
+                    '&:hover': {
+                        backgroundColor: '#009688',
+                        color: '#009688',
+                        '&, & .MuiListItemIcon-root a': {
+                            color: 'white',
+                          },
+                      }
+                },
+            }
+        }
     }
   });

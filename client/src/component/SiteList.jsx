@@ -1,12 +1,31 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
-import { getSiteObj } from '../features/list/navListSlice'
-import { Link } from 'react-router-dom'
-
+import { styled, ThemeProvider } from '@mui/material/styles'
+import { theme } from '../theme'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
+
+const StyledList = styled(List)(({ theme })=>(
+  {
+    // selected and (selected + hover) states
+    '&& .Mui-selected, && .Mui-selected:hover': {
+      backgroundColor: theme.palette.primary.main,
+      borderRadius:theme.shape.borderRadius * 1,
+      '&, & .MuiListItemIcon-root': {
+        color: 'white',
+      },
+    },
+    // hover states
+    '& .MuiListItemButton-root:hover': {
+      borderRadius:theme.shape.borderRadius * 1,
+      '&, & .MuiListItemIcon-root': {
+        color: 'white',
+      },
+    },
+  }
+));
 
 const SiteList = () => {
   const {siteList} = useSelector(store=>store.navListSlice)
@@ -16,34 +35,21 @@ const SiteList = () => {
     setSelectedID(id)
   }
     return ( 
-        <>
+      <ThemeProvider theme={theme}>
         <h1>Sitelist</h1>
-        <List>
+        <StyledList>
             {siteList.map(navitem => (
                 <ListItem key={navitem.id} disablePadding>
                 <ListItemButton selected={selectedID === navitem.id} onClick={()=>handleSelectedSite(navitem.id)} 
-                sx={{
-                    '&.Mui-selected': {
-                      backgroundColor: 'primary.main',
-                      borderRadius:1
-                    },
-                    '&.Mui-focusVisible': {
-                      backgroundColor: 'primary.main',
-                      borderRadius:1
-                    },
-                    ':hover': {
-                      backgroundColor: 'primary.main',
-                      borderRadius:1
-                    }
-                 }}>
+                >
                   {/* <Link to={`${navitem.id}/dns`} > */}
                     <ListItemText primary={navitem.name} />
                   {/* </Link>   */}
                 </ListItemButton>
               </ListItem>
             ))}
-        </List>
-        </>
+        </StyledList>
+      </ThemeProvider>
      );
 }
  

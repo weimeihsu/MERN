@@ -26,10 +26,10 @@ const MainMenu = () => {
               px: [1],
             }}
           >
-          </Toolbar>
+        </Toolbar>
           <Divider />
 
-          <List>
+        <List>
             {mainMenu.map(navitem => (
                 <ListItem key={navitem.id} disablePadding>
                 <ListItemButton selected={selectedID === navitem.id} onClick={()=>handlesSelected(navitem.id)}>

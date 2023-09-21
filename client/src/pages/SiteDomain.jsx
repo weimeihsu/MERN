@@ -12,7 +12,7 @@ const SiteDomain = () => {
         setIsOpen(isOpen => !isOpen)
     }
     return ( 
-        <Container sx={{display: 'flex', flexDirection: 'row'}} disableGutters>
+        <Container sx={{display: 'flex', flexDirection: 'row'}} disableGutters maxWidth='false'>
             <Collapse in={isOpen} orientation="horizontal">
             <Box sx={{ backgroundColor: 'primary.light', p:2 }} height="100vh"><SiteList/></Box></Collapse>
            
