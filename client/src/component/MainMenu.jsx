@@ -1,10 +1,8 @@
-import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
 import Divider from '@mui/material/Divider'
 import Toolbar from '@mui/material/Toolbar'
-
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -32,10 +30,8 @@ const MainMenu = () => {
         <List>
             {mainMenu.map(navitem => (
                 <ListItem key={navitem.id} disablePadding>
-                <ListItemButton selected={selectedID === navitem.id} onClick={()=>handlesSelected(navitem.id)}>
-                  <NavLink to={navitem.path}>
+                <ListItemButton selected={selectedID === navitem.id} onClick={()=>handlesSelected(navitem.id)} component="a" href={navitem.path}>
                     <ListItemText primary={navitem.name} />
-                  </NavLink>  
                 </ListItemButton>
               </ListItem>
             ))}

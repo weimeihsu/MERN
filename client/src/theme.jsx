@@ -15,13 +15,19 @@ export const theme = createTheme({
         MuiListItemButton: {
             styleOverrides: {
                 root:{
+                    borderRadius:4,
                     '&:hover': {
                         backgroundColor: '#009688',
-                        color: '#009688',
-                        '&, & .MuiListItemIcon-root a': {
+                        color: 'white',
+                      },
+                    '&.Mui-selected, && .Mui-selected:hover': {
+                        backgroundColor: '#009688',
+                        color: 'white',
+                        '&:hover':{
+                            backgroundColor: '#009688',
                             color: 'white',
-                          },
-                      }
+                        }
+                      }  
                 },
             }
         }
