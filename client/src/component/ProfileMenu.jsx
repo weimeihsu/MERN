@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+import ListItemText from '@mui/material/ListItemText'
 import Box from '@mui/material/Box'
 
 const AccountMenu = () => {
@@ -43,9 +44,11 @@ const AccountMenu = () => {
             onClose={handleCloseUserMenu}
             >
             {accountList.map((accountItem, idx) => (
-                <MenuItem key={idx} onClick={handleCloseUserMenu}>
-                <NavLink>{accountItem.name}</NavLink>
-                </MenuItem>
+                <NavLink to={accountItem.path} key={idx}>
+                    <MenuItem onClick={handleCloseUserMenu}>
+                        <ListItemText>{accountItem.name}</ListItemText>
+                    </MenuItem>
+                </NavLink>
             ))}
             </Menu>
         </Box>

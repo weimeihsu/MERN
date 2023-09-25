@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { ThemeProvider } from '@mui/material/styles'
+import { getselectedSiteID } from '../features/list/navListSlice'
 import { theme } from '../theme'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -14,6 +15,7 @@ const SiteList = () => {
   const dispatch = useDispatch()
   const handleSelectedSite = (id) =>{
     setSelectedID(id)
+    dispatch(getselectedSiteID({selectedSiteID:id}))
   }
     return ( 
       <ThemeProvider theme={theme}>

@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import Divider from '@mui/material/Divider'
 import Toolbar from '@mui/material/Toolbar'
@@ -29,11 +30,13 @@ const MainMenu = () => {
 
         <List>
             {mainMenu.map(navitem => (
-                <ListItem key={navitem.id} disablePadding>
-                <ListItemButton selected={selectedID === navitem.id} onClick={()=>handlesSelected(navitem.id)} component="a" href={navitem.path}>
-                    <ListItemText primary={navitem.name} />
-                </ListItemButton>
-              </ListItem>
+              <Link to={navitem.path} key={navitem.id}>
+                <ListItem disablePadding>
+                  <ListItemButton selected={selectedID === navitem.id} onClick={()=>handlesSelected(navitem.id)} >
+                      <ListItemText primary={navitem.name} />
+                  </ListItemButton>
+                </ListItem>
+              </Link>
             ))}
         </List>
       </>  

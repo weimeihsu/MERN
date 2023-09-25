@@ -27,19 +27,19 @@ const initialState = {
                  {id:'4', name:'cname.travel.com'},
         ]}
     ],
-    selectedSiteObj: null,
+    selectedSiteID: null,
 }
 
 export const navListSlice = createSlice({
     name:'navlist',
     initialState,
     reducers:{
-        getSiteObj: (state, action)=>{
-            const { selectedSiteObj } = action.payload
-            state.selectedSiteObj = selectedSiteObj
+        getselectedSiteID: (state, action)=>{
+            const { selectedSiteID } = action.payload
+            state.selectedSiteID = selectedSiteID
         },
         backToMain: (state, action)=>{
-            state.selectedSiteObj = null
+            state.selectedSiteID = null
             state.selectedMainMenuID = state.mainMenu[1].id
             // navigate to site list page
         },
@@ -50,5 +50,5 @@ export const navListSlice = createSlice({
     }
 })
 
-export const { getSiteObj, backToMain } = navListSlice.actions
+export const { getselectedSiteID, backToMain } = navListSlice.actions
 export default navListSlice.reducer
