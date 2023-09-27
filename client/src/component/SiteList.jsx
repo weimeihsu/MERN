@@ -12,13 +12,14 @@ import ListItemText from '@mui/material/ListItemText'
 const SiteList = () => {
   const {siteList} = useSelector(store=>store.navListSlice)
   const [selected, setSelected] = useState()
+  
   const dispatch = useDispatch()
   const handleSelectedSite = (id, name) =>{
     setSelected(name)
     dispatch(getselectedSite(
       { selectedSiteName:name,
         selectedSiteID:id }))
-    dispatch(filter({selectedSiteName:name}))
+    dispatch(filter({selectedSiteName:name})) 
   }
     return ( 
       <ThemeProvider theme={theme}>

@@ -37,15 +37,12 @@ export const navListSlice = createSlice({
         getselectedSite: (state, action)=>{
             const { selectedSiteName, selectedSiteID } = action.payload
             state.selectedSiteName = selectedSiteName
-            state.selectedSiteID = selectedSiteID
-            
+            state.selectedSiteID = selectedSiteID 
         },
         filter: (state, action) => {
             const { selectedSiteName } = action.payload
-            console.log(selectedSiteName)
-            state.filteredDomainlist = state.domainList.filter(domain => domain.sitename === selectedSiteName)
-            // console.log(state.filteredDomainlist)
-            // state.filteredDomainlist.push(list)
+            state.filteredDomainlist=[...state.domainList]
+            state.domainList = state.domainList.filter(domain => domain.sitename === selectedSiteName)
         },
         backToMain: (state, action)=>{
             state.selectedSiteID = null

@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import DeleteIcon from '@mui/icons-material/Delete'
 import Chip from '@mui/material/Chip'
@@ -10,10 +10,11 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
+import { filter } from '../features/list/navListSlice'
 
 const DomainList = ({toggleSitePanel}) => {
     const { selectedSiteID, domainList, filteredDomainlist } = useSelector(store=>store.navListSlice)
-    
+
     return ( 
         <>
         <IconButton aria-label="toggle" onClick={toggleSitePanel}>
@@ -22,7 +23,7 @@ const DomainList = ({toggleSitePanel}) => {
         <h1>Domain Table</h1>
           <List>
             
-            {filteredDomainlist.map(recordItem => (
+            {domainList.map(recordItem => (
               <ListItem key={recordItem.id}>
                 <ListItemButton component="a" href="#" sx={{border: '1px solid lightBlue',borderRadius: 1 }}>
                   <ListItemText primary={recordItem.name} />

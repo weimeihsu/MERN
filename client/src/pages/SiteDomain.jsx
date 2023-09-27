@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import Collapse from '@mui/material/Collapse'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
@@ -11,6 +13,7 @@ const SiteDomain = () => {
     const toggleSitePanel = () =>{
         setIsOpen(isOpen => !isOpen)
     }
+    
     return ( 
         <Container sx={{display: 'flex', flexDirection: 'row'}} disableGutters maxWidth='false'>
             <Collapse in={isOpen} orientation="horizontal">
