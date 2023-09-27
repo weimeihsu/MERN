@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { ThemeProvider } from '@mui/material/styles'
-import { getselectedSiteID } from '../features/list/navListSlice'
+import { getselectedSite, filter } from '../features/list/navListSlice'
 import { theme } from '../theme'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -11,11 +11,14 @@ import ListItemText from '@mui/material/ListItemText'
 
 const SiteList = () => {
   const {siteList} = useSelector(store=>store.navListSlice)
-  const [selectedID, setSelectedID] = useState()
+  const [selected, setSelected] = useState()
   const dispatch = useDispatch()
-  const handleSelectedSite = (id) =>{
-    setSelectedID(id)
-    dispatch(getselectedSiteID({selectedSiteID:id}))
+  const handleSelectedSite = (id, name) =>{
+    setSelected(name)
+    dispatch(getselectedSite(
+      { selectedSiteName:name,
+        selectedSiteID:id }))
+    dispatch(filter({selectedSiteName:name}))
   }
     return ( 
       <ThemeProvider theme={theme}>
@@ -23,7 +26,7 @@ const SiteList = () => {
         <List>
             {siteList.map(navitem => (
                 <ListItem key={navitem.id} disablePadding>
-                <ListItemButton selected={selectedID === navitem.id} onClick={()=>handleSelectedSite(navitem.id)} 
+                <ListItemButton selected={selected === navitem.name} onClick={()=>handleSelectedSite(navitem.id, navitem.name)} 
                 >
                   {/* <Link to={`${navitem.id}/dns`} > */}
                     <ListItemText primary={navitem.name} />

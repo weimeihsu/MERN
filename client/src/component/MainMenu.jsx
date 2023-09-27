@@ -26,7 +26,8 @@ const MainMenu = () => {
             }}
           >
         </Toolbar>
-          <Divider />
+        
+        <Divider />
 
         <List>
             {mainMenu.map(navitem => (
