@@ -23,7 +23,7 @@ const DomainList = ({toggleSitePanel}) => {
         <h1>Domain Table</h1>
           <List>
             
-            {domainList.map(recordItem => (
+            {filteredDomainlist.map(recordItem => (
               <ListItem key={recordItem.id}>
                 <ListItemButton component="a" href="#" sx={{border: '1px solid lightBlue',borderRadius: 1 }}>
                   <ListItemText primary={recordItem.name} />
