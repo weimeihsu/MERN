@@ -10,8 +10,8 @@ const Routers = () => {
         <Routes>
             <Route index element={<HomePage/> } />
             <Route path="recordform" element={<RecordnForm/> }/>
-            <Route path="sitelist" element={<SiteDomain/>}/>
-            <Route path="sitelist/:siteID/*" element={<SiteRoutes/>}/>
+            <Route path="site-domain" element={<SiteDomain/>}/>
+            <Route path="site-domain/:siteID/*" element={<SiteRoutes/>}/>
         </Routes>
     )
 }

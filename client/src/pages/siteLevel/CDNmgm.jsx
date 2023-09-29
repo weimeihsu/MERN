@@ -7,11 +7,11 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 
 const CDNmgm = () => {
-    const { siteID } = useParams()
+    const { siteID, domainID } = useParams()
     const [age, setAge] = useState('')
     return ( 
         <>
-        <h1>CDN Management{siteID}</h1>
+        <h1>CDN Management{siteID}{domainID}</h1>
         <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Age</InputLabel>

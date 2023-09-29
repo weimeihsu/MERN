@@ -3,10 +3,10 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     mainMenu:[
         {id:1, path:'/', name:'Homepage'},
-        {id:2, path:'/sitelist', name:'Site List'},
+        {id:2, path:'/site-domain', name:'Site List'},
         {id:3, path:'/recordform', name:'List & Form'}
     ],
-    selectedMainMenuID: 1,
+    selectedMainMenuID: null,
     siteLevelMenu:[
         {id:1, path:'dns', name:'DNS'},
         {id:2, path:'cdn', name:'CDN Management'}
@@ -25,9 +25,14 @@ const initialState = {
         {id:'3', sitename:'travel.com', name:'domain.travel.com'},
         {id:'4', sitename:'travel.com', name:'cname.travel.com'}
     ],
-    filteredDomainlist:[],
+    filteredDomainlist:[
+        {id:'1', sitename:'example.com', name:'domain.example.com'},
+        {id:'2', sitename:'example.com', name:'cname.example.com'},
+        {id:'3', sitename:'travel.com', name:'domain.travel.com'},
+        {id:'4', sitename:'travel.com', name:'cname.travel.com'}
+    ],
     selectedSiteName: null,
-    selectedSiteID: null
+    selectedSiteID: null,
 }
 
 export const navListSlice = createSlice({
@@ -42,7 +47,10 @@ export const navListSlice = createSlice({
         filter: (state, action) => {
             // const { selectedSiteName } = action.payload
             state.filteredDomainlist = [...state.domainList].filter(domain => domain.sitename === state.selectedSiteName)
-            
+        },
+        initState: (state, action) => {
+            state.filteredDomainlist = [...state.domainList]
+            state.selectedSiteName = null
         },
         backToMain: (state, action)=>{
             state.selectedSiteID = null
@@ -56,5 +64,5 @@ export const navListSlice = createSlice({
     }
 })
 
-export const { getselectedSite, backToMain, filter } = navListSlice.actions
+export const { getselectedSite, backToMain, filter, initState } = navListSlice.actions
 export default navListSlice.reducer

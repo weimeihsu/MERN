@@ -7,7 +7,7 @@ const SiteRoutes = () => {
     return ( 
         <Routes>
             <Route path="dns" element={<DnsRecords/>}/>
-            <Route path="cdn" element={<CDNmgm/> } />  
+            <Route path="cdn/:domainID" element={<CDNmgm/> } />  
         </Routes>
      );
 }

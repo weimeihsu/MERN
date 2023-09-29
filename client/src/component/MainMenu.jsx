@@ -1,6 +1,7 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { initState } from '../features/list/navListSlice'
 
 import Divider from '@mui/material/Divider'
 import Toolbar from '@mui/material/Toolbar'
@@ -10,11 +11,14 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 
 const MainMenu = () => {
+    const dispatch = useDispatch()
     const { mainMenu, selectedMainMenuID } = useSelector(store=>store.navListSlice)
-    const [ selectedID, setSelectedID ] = useState(selectedMainMenuID)
+    const [ selected, setSelected ] = useState(selectedMainMenuID)
     const handlesSelected = (id) =>{
-    setSelectedID(id)
+      setSelected(id)
+      dispatch(initState())
     }
+ 
     return ( 
       <>
         <Toolbar
@@ -33,7 +37,7 @@ const MainMenu = () => {
             {mainMenu.map(navitem => (
               <Link to={navitem.path} key={navitem.id}>
                 <ListItem disablePadding>
-                  <ListItemButton selected={selectedID === navitem.id} onClick={()=>handlesSelected(navitem.id)} >
+                  <ListItemButton selected={selected === navitem.id} onClick={()=>handlesSelected(navitem.id)} >
                       <ListItemText primary={navitem.name} />
                   </ListItemButton>
                 </ListItem>
