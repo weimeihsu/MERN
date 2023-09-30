@@ -1,5 +1,5 @@
 const express = require('express')
-const {createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord} = require('../controllers/recordController')
+const { createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord } = require('../controllers/recordController')
 const router = express.Router()
 
 // GET all items

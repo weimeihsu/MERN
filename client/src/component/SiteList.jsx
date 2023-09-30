@@ -17,12 +17,12 @@ const SiteList = () => {
     setSelected(selectedSiteName),[]
   })
   const dispatch = useDispatch()
-  const handleSelectedSite = (id, name) =>{
-    setSelected(name)
+  const handleSelectedSite = (id, sitename) =>{
+    setSelected(sitename)
     dispatch(getselectedSite(
-      { selectedSiteName:name,
+      { selectedSiteName:sitename,
         selectedSiteID:id }))
-    dispatch(filter({selectedSiteName:name})) 
+    dispatch(filter({selectedSiteName:sitename})) 
   }
 
     return ( 
@@ -31,10 +31,10 @@ const SiteList = () => {
         <List>
             {siteList.map(navitem => (
                 <ListItem key={navitem.id} disablePadding>
-                <ListItemButton selected={selected === navitem.name} onClick={()=>handleSelectedSite(navitem.id, navitem.name)} 
+                <ListItemButton selected={selected === navitem.sitename} onClick={()=>handleSelectedSite(navitem.id, navitem.sitename)} 
                 >
                   {/* <Link to={`${navitem.id}/dns`} > */}
-                    <ListItemText primary={navitem.name} />
+                    <ListItemText primary={navitem.sitename} />
                   {/* </Link>   */}
                 </ListItemButton>
               </ListItem>

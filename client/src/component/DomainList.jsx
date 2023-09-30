@@ -15,8 +15,8 @@ import { getSelectedDomain } from '../features/list/navListSlice'
 const DomainList = ({toggleSitePanel}) => {
     const dispatch = useDispatch()
     const { domainList, filteredDomainlist } = useSelector(store=>store.navListSlice)
-    const getDomain = (name) => {
-      dispatch(getSelectedDomain({selectedDomain:name}))
+    const getDomain = (domainname) => {
+      dispatch(getSelectedDomain({selectedDomain:domainname}))
     }
     return ( 
         <>
@@ -26,10 +26,10 @@ const DomainList = ({toggleSitePanel}) => {
         <h1>Domain Table</h1>
           <List>
             {filteredDomainlist.map(recordItem => (
-              <Link to={`${recordItem.sitename}/cdn/${recordItem.name}`} key={recordItem.id} onClick={() => getDomain(recordItem.name)}>
+              <Link to={`${recordItem.sitename}/cdn/${recordItem.domainname}`} key={recordItem.id} onClick={() => getDomain(recordItem.domainname)}>
                 <ListItem>
                 <ListItemButton sx={{border: '1px solid lightBlue',borderRadius: 1 }}>
-                  <ListItemText primary={recordItem.name} />
+                  <ListItemText primary={recordItem.domainname} />
                   <Chip label={recordItem.sitename} size="small" sx={{m:1}}/>
                   <IconButton size="small" aria-label="delete" onClick={() => handleRemove(recordItem.id)}>
                     <DeleteIcon fontSize="inherit"/>

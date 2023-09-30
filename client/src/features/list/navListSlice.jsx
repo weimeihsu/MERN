@@ -16,20 +16,20 @@ const initialState = {
         {path:'/lougout', name:'Logout'}
     ],
     siteList:[
-        {id:'site123', name:'example.com'}, 
-        {id:'site456', name:'travel.com'}
+        {id:'site123', sitename:'example.com'}, 
+        {id:'site456', sitename:'travel.com'}
     ],
     domainList:[
-        {id:'1', sitename:'example.com', name:'domain.example.com'},
-        {id:'2', sitename:'example.com', name:'cname.example.com'},
-        {id:'3', sitename:'travel.com', name:'domain.travel.com'},
-        {id:'4', sitename:'travel.com', name:'cname.travel.com'}
+        {id:'1', sitename:'example.com', domainname:'domain.example.com'},
+        {id:'2', sitename:'example.com', domainname:'cname.example.com'},
+        {id:'3', sitename:'travel.com', domainname:'domain.travel.com'},
+        {id:'4', sitename:'travel.com', domainname:'cname.travel.com'}
     ],
     filteredDomainlist:[
-        {id:'1', sitename:'example.com', name:'domain.example.com'},
-        {id:'2', sitename:'example.com', name:'cname.example.com'},
-        {id:'3', sitename:'travel.com', name:'domain.travel.com'},
-        {id:'4', sitename:'travel.com', name:'cname.travel.com'}
+        {id:'1', sitename:'example.com', domainname:'domain.example.com'},
+        {id:'2', sitename:'example.com', domainname:'cname.example.com'},
+        {id:'3', sitename:'travel.com', domainname:'domain.travel.com'},
+        {id:'4', sitename:'travel.com', domainname:'cname.travel.com'}
     ],
     selectedSiteName: null,
     selectedSiteID: null,

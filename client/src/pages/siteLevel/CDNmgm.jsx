@@ -30,7 +30,7 @@ const CDNmgm = () => {
             onChange={handleChange}
           >
             {filteredDomainlist.map(recordItem => (
-              <MenuItem key={recordItem.id} value={recordItem.name}>{recordItem.name}</MenuItem>
+              <MenuItem key={recordItem.id} value={recordItem.domainname}>{recordItem.domainname}</MenuItem>
             ))}
           </Select>
         </FormControl>
