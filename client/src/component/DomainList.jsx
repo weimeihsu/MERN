@@ -10,11 +10,14 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
-import { filter } from '../features/list/navListSlice'
+import { getSelectedDomain } from '../features/list/navListSlice'
 
 const DomainList = ({toggleSitePanel}) => {
+    const dispatch = useDispatch()
     const { domainList, filteredDomainlist } = useSelector(store=>store.navListSlice)
-
+    const getDomain = (name) => {
+      dispatch(getSelectedDomain({selectedDomain:name}))
+    }
     return ( 
         <>
         <IconButton aria-label="toggle" onClick={toggleSitePanel}>
@@ -23,7 +26,7 @@ const DomainList = ({toggleSitePanel}) => {
         <h1>Domain Table</h1>
           <List>
             {filteredDomainlist.map(recordItem => (
-              <Link to={`${recordItem.sitename}/cdn/${recordItem.name}`} key={recordItem.id}>
+              <Link to={`${recordItem.sitename}/cdn/${recordItem.name}`} key={recordItem.id} onClick={() => getDomain(recordItem.name)}>
                 <ListItem>
                 <ListItemButton sx={{border: '1px solid lightBlue',borderRadius: 1 }}>
                   <ListItemText primary={recordItem.name} />

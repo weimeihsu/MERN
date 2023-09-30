@@ -33,6 +33,7 @@ const initialState = {
     ],
     selectedSiteName: null,
     selectedSiteID: null,
+    selectedDomainName: null
 }
 
 export const navListSlice = createSlice({
@@ -43,6 +44,10 @@ export const navListSlice = createSlice({
             const { selectedSiteName, selectedSiteID } = action.payload
             state.selectedSiteName = selectedSiteName
             state.selectedSiteID = selectedSiteID 
+        },
+        getSelectedDomain: (state, action) => {
+            const { selectedDomain } = action.payload
+            state.selectedDomainName = selectedDomain
         },
         filter: (state, action) => {
             // const { selectedSiteName } = action.payload
@@ -64,5 +69,5 @@ export const navListSlice = createSlice({
     }
 })
 
-export const { getselectedSite, backToMain, filter, initState } = navListSlice.actions
+export const { getselectedSite, backToMain, filter, initState, getSelectedDomain } = navListSlice.actions
 export default navListSlice.reducer

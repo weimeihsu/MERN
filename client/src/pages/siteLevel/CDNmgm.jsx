@@ -1,30 +1,37 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
+import Typography from '@mui/material/Typography'
 
 const CDNmgm = () => {
+    const { filteredDomainlist, selectedDomainName } = useSelector(store=>store.navListSlice)
     const { siteID, domainID } = useParams()
-    const [age, setAge] = useState('')
+    const [ domain, setDomain ] = useState('')
+    const handleChange = (e) =>{
+      setDomain(e.target.value)
+    }
     return ( 
         <>
-        <h1>CDN Management{siteID}{domainID}</h1>
+        <h1>CDN Management{domainID}</h1>
+        <Typography variant="h6" gutterBottom>{siteID}</Typography>
         <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <InputLabel id="demo-simple-select-label">Domains</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={age}
-            label="Age"
-            // onChange={handleChange}
+            value={selectedDomainName}
+            label="Domains"
+            onChange={handleChange}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            {filteredDomainlist.map(recordItem => (
+              <MenuItem key={recordItem.id} value={recordItem.name}>{recordItem.name}</MenuItem>
+            ))}
           </Select>
         </FormControl>
         </Box>
