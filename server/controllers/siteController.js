@@ -23,7 +23,7 @@ const getSingleSite = async(req, res)=>{
 // create a new site
 const createSite = async(req, res) =>{
 
-    const {title, category} = req.body
+    const { sitename } = req.body
 
     // let emptyFields = []
 
@@ -38,7 +38,7 @@ const createSite = async(req, res) =>{
     // }
     // add site to mongodb
     try{
-        const site = await siteSchema.create({title, category})
+        const site = await siteSchema.create({sitename})
         res.status(200).json(site)
     } catch(err){
         res.status(400).json({error: err.message})

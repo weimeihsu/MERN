@@ -23,7 +23,7 @@ const getSingleDomain = async(req, res)=>{
 // create a new domain
 const createDomain = async(req, res) =>{
 
-    const {title, category} = req.body
+    const { sitename, domainname } = req.body
 
     // let emptyFields = []
 
@@ -38,7 +38,7 @@ const createDomain = async(req, res) =>{
     // }
     // add domain to mongodb
     try{
-        const domain = await domainSchema.create({title, category})
+        const domain = await domainSchema.create({sitename,domainname})
         res.status(200).json(domain)
     } catch(err){
         res.status(400).json({error: err.message})

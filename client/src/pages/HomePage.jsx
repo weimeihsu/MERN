@@ -1,6 +1,9 @@
+import Container from '@mui/material/Container'
 const HomePage = () => {
     return (
-        <h1>homepage</h1>
+        <Container>
+             <h1>homepage</h1>
+        </Container>
      );
 }
  

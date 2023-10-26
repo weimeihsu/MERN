@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
 import Collapse from '@mui/material/Collapse'
 import Container from '@mui/material/Container'

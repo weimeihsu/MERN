@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const siteSchema = new Schema({
     sitename: {
         type:String,
-        required: true
+        required: true,
     }
 }, {timestamps: true})
 

@@ -19,7 +19,7 @@ app.use('/api/domains', domainRoutes)
 mongoose.connect(process.env.MONGO_URI)
     .then(()=>{
         // listen for request
-        app.listen(PORT,()=>{ console.log('Connect to DB and listen to port '+ process.env.PORT )})
+        app.listen(PORT,()=>{ console.log('Connect to DB and listen to port '+ PORT )})
     })
     .catch((error)=>{
         console.log(error)

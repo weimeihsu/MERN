@@ -16,7 +16,11 @@ const LeftDrawer = ({drawerWidth, open}) => {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            '& .MuiList-padding':{
+              padding:'12px'
+            }
           },
+          
         }}
         variant="persistent"
         anchor="left"
