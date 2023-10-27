@@ -9,11 +9,10 @@ import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
-const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText}) => {
+const MovieForm = ({recordID, recordTitle, recordCategory, formTitle, btnText}) => {
     const dispatch = useDispatch()
     const {categories} = useSelector(store => store.recordSlice)
     // this state is for button and title text
-    const [createMode, setCreateMode] = useState(true)
 
     const id = recordID ? recordID : undefined
     const [title, setTitle] = useState(id ? recordTitle : '')
@@ -76,12 +75,10 @@ const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText})
         //     // dispatch(updateRecord({theRecord}))
         // }               
     }
-
     return ( 
         <>
         <h1>{formTitle}</h1>
         <form onSubmit={handleSubmit}>
-
             <p>{recordTitle}</p>
             <p>{recordCategory}</p>
                 <TextField id="outlined-basic" label="Movie name" variant="outlined" size="small" sx={{mb:2}} fullWidth required onChange={changeTitle} value={title}/>
@@ -104,12 +101,11 @@ const RecordForm = ({recordID, recordTitle, recordCategory, formTitle, btnText})
                 {error && <div>{error}</div>}
         </form>
         </>
-     );
+    );
 }
 
-RecordForm.defaultProps = {
-    formTitle: 'Create Record',
+MovieForm.defaultProps = {
+    formTitle: 'Create Movie',
     btnText:'Create',
 }
-
-export default RecordForm;
+export default MovieForm;
