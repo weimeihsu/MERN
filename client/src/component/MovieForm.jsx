@@ -54,6 +54,9 @@ const MovieForm = ({recordID, recordTitle, recordCategory, formTitle, btnText, c
         try{
             const res = await apiMovieRecords.put(`/api/records/${id}`, record)
             dispatch(updateRecord({theRecord:record, id}))
+            setCategory('')
+            setTitle('')
+            closeForm()
         }catch(err){
             err.message
         }         
@@ -64,16 +67,16 @@ const MovieForm = ({recordID, recordTitle, recordCategory, formTitle, btnText, c
         <form onSubmit={handleSubmit}>
 
         <Grid sx={{ flexGrow: 1 }} container spacing={2}>
+        {recordID && 
             <Grid item>
-            {recordID && 
                  <Stack spacing={2}>
                     <h4>Current Data</h4>
-                    <p><Typography mr={2} sx={{fontWeight:'bold'}}>Movie ID:</Typography>{recordID}</p>
-                    <p><Typography mr={2} sx={{fontWeight:'bold'}}>Moview Title:</Typography>{recordTitle}</p>
-                    <p><Typography mr={2} sx={{fontWeight:'bold'}}>Movie Category:</Typography>{recordCategory}</p>
+                    <div><Typography mr={2} sx={{fontWeight:'bold'}}>Movie ID:</Typography>{recordID}</div>
+                    <div><Typography mr={2} sx={{fontWeight:'bold'}}>Moview Title:</Typography>{recordTitle}</div>
+                    <div><Typography mr={2} sx={{fontWeight:'bold'}}>Movie Category:</Typography>{recordCategory}</div>
                 </Stack>
-            }
             </Grid>
+         }
             <Grid item>
             <TextField id="movie-name" label="Movie name" variant="outlined" size="small" sx={{mb:2}} fullWidth required onChange={changeTitle} value={title}/>
                     <FormControl fullWidth size="small" sx={{mb:2}}>
@@ -91,7 +94,7 @@ const MovieForm = ({recordID, recordTitle, recordCategory, formTitle, btnText, c
                     </FormControl>
                 <Stack spacing={2} direction="row">
                     <Button variant="contained" type='submit'>{btnText}</Button>
-                    {recordID && <Button variant="outlined" type='cacenl' onClick={closeForm}>Cancel</Button> }      
+                    {recordID && <Button variant="outlined" type='cancel' onClick={closeForm}>Cancel</Button> }      
                 </Stack>
                 {error && <div>{error}</div>}
             </Grid>
