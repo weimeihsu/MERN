@@ -10,7 +10,8 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
-import { getSelectedDomain } from '../features/list/navListSlice'
+
+import { getSelectedDomain } from '../features/navListSlice'
 
 const DomainList = ({toggleSitePanel}) => {
     const dispatch = useDispatch()
