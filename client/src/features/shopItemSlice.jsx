@@ -10,7 +10,13 @@ const initialState = {
     ],
     quantityInCart:33,
     sum:100,
-    ItemsInCart:[],
+    itemsInCart:[{
+        _id:'afaeç23',
+        category:'book',
+        name:'Harry Potter',
+        price: 100,
+        count:2
+    }],
     amount:5,
     filteredItems:[],
     categories:[
@@ -43,8 +49,10 @@ export const shopItemSlice = createSlice({
             state.ItemsInCart = []
         },
         addToCart: (state, action) => {
-            const { shopItem } = action.payload
-            
+            const { shopItem, count } = action.payload
+            const newShopItem ={...shopItem, shopItemCount: count}
+            console.log(newShopItem)
+            // shopItem.count=shopItemCount  
         },
         accumulateAmount: (state) => {
             state.amount = state.ItemsInCart.length
@@ -82,7 +90,7 @@ export const shopItemSlice = createSlice({
     }
 })
 
-export const { addRecord, deleteRecord, updateRecord, filter } = shopItemSlice.actions
+export const { addToCart, deleteRecord, updateRecord, filter } = shopItemSlice.actions
 // export const { selectAllRecords } = state => state.recordsState.records
 // export const { getFetchStatus } = state => state.recordsState.status
 // export const { getFetchError } = state => state.recordsState.error
