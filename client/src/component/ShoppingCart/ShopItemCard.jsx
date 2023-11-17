@@ -1,5 +1,5 @@
 import { useState, forwardRef } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../features/shopItemSlice'
 
 import Typography from '@mui/material/Typography'
@@ -10,22 +10,36 @@ import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Snackbar from '@mui/material/Snackbar'
 import Stack from '@mui/material/Stack'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
 import MuiAlert from '@mui/material/Alert'
-
-import CountSelect from './CountSelect'
+import Box from '@mui/material/Box'
 
 const Alert = forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   })
 
 const ShopItemCard = (item) => {
-
     const dispatch = useDispatch()
-    const [buyCount, setBuyCount] = useState(1)
-    
+    const { countList } = useSelector(store => store.shopItemSlice)
+    const [ buyCount, setBuyCount] = useState(1)
+    const [ selectedItem, setSelectedItem ] = useState(item)
     const handleChange = (e) => {
         setBuyCount(e.target.value)
     }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const theItem = { 
+            _id: selectedItem._id,
+            name: selectedItem.name,
+            price: selectedItem.price, 
+            quantity: buyCount 
+        }
+        dispatch(addToCart({shopItem:theItem}))
+        setBuyCount(1)
+    }
+    
     const [snackBarState, setSnackbarState] = useState({
         open:false,
         vertical:'top',
@@ -36,15 +50,15 @@ const ShopItemCard = (item) => {
     const handleClose = () => {
         setSnackbarState({...snackBarState, open: false})
     }
-    const handleAddToCart = (shopItem, newSnackState) => {
-        const theItem = {
-            _id: shopItem._id,
-            name: shopItem.name,
-            price: shopItem.price, 
-            inventory: 2
-        }
-        dispatch(addToCart({shopItem:theItem}))
-        setBuyCount(1)
+    const handleAddToCart = (newSnackState) => {
+        // const theItem = {
+        //     _id: shopItem._id,
+        //     name: shopItem.name,
+        //     price: shopItem.price, 
+        //     quantity: buyCount
+        // }
+        // dispatch(addToCart({shopItem:theItem}))
+        
         setSnackbarState({...newSnackState, open: true})
     }
    
@@ -58,8 +72,20 @@ const ShopItemCard = (item) => {
             <CardActions>
                 <Stack spacing={2} alignItems="flex-end">
                     <Typography variant="h6">${item.price}</Typography>
-                    <CountSelect buyCount={buyCount} handleChange={handleChange} />
-                    <Button size="small" variant="contained" color="secondary" onClick={()=>handleAddToCart(item, { vertical: 'top', horizontal: 'center' })}>Add to Cart</Button>
+                    <Box component="form" onSubmit={handleSubmit}>
+                    <FormControl sx={{  minWidth: 80 }} size="small">
+                        <Select
+                        value={buyCount}
+                        onChange={handleChange}
+                        displayEmpty
+                        >
+                        {countList.map((item, idx)=>(
+                            <MenuItem key={idx} value={item}>{item}</MenuItem>
+                        ))}
+                        </Select>
+                    </FormControl>
+                    <Button onClick={()=>handleAddToCart({ vertical: 'top', horizontal: 'center' })} type='submit' size="small" variant="contained" color="secondary">Add to Cart</Button>
+                    </Box>
                     <Snackbar
                         anchorOrigin={{ vertical, horizontal }}
                         open={open}
@@ -67,7 +93,7 @@ const ShopItemCard = (item) => {
                         autoHideDuration={1000}
                         onClose={handleClose}
                     >
-                        <Alert severity="success">This is a success message!</Alert>
+                        <Alert severity="success">Item(s) Added!</Alert>
                     </Snackbar>
                 </Stack>
             </CardActions>
@@ -76,3 +102,5 @@ const ShopItemCard = (item) => {
 }
  
 export default ShopItemCard;
+
+// onClick={()=>handleAddToCart({ vertical: 'top', horizontal: 'center' })}
