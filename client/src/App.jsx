@@ -9,6 +9,7 @@ import { theme } from './theme'
 import NavBar from './component/NavBar'
 import LeftDrawer from './component/LeftDrawer'
 
+
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })
@@ -29,7 +30,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })
   }),
 }));
 
-function App() {
+const App = () => {
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -40,10 +41,10 @@ function App() {
     <Box sx={{ display: 'flex' }}>
       <NavBar toggleDrawer={toggleDrawer} open={open}/>
       <LeftDrawer drawerWidth={drawerWidth} toggleDrawer={toggleDrawer} open={open}/>
-        <Main open={open}>
-            <Toolbar />
-            <Routers/>
-        </Main>
+      <Main open={open}>
+          <Toolbar />
+          <Routers/>
+      </Main>
     </Box>
     </ThemeProvider>
   )

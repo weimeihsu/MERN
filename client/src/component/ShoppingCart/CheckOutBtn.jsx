@@ -20,9 +20,9 @@ const CheckOutBtn = () => {
     <>
         <IconButton onClick={handleCheckOut} sx={{ p: 0, color: 'white' }} size="large">
             <ShoppingCartIcon/>
-            <div className="amount-container">
+            {quantityInCart ? <div className="amount-container">
                 <p className="total-amount">{quantityInCart}</p>
-            </div>
+            </div> : null}
         </IconButton>
     </> );
 }

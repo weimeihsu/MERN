@@ -98,11 +98,7 @@ const MovieForm = ({recordID, recordTitle, recordCategory, formTitle, btnText, c
                 </Stack>
                 {error && <div>{error}</div>}
             </Grid>
-        </Grid>
-
-            
-            
-                
+        </Grid>  
         </form>
         </>
     );
