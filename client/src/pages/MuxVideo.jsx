@@ -1,8 +1,8 @@
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
-import TagsInputs from '../component/TagsInput'
-import MovieRecords from '../component/MovieRecords'
+import TagsInputs from '../component/movieRecord/TagsInput'
+import MovieRecords from '../component/movieRecord/MovieRecords'
 
 const MuxVideo = () => {
   return ( 

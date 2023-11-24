@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate , Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { updateTotalQty } from '../../features/shopItemSlice'
@@ -14,7 +14,7 @@ const CheckOutBtn = () => {
         dispath(updateTotalQty()),[]
     })
     const handleCheckOut = () => {
-        navigate('/online-store/checkout')
+        navigate('/checkout')
     }
     return ( 
     <>

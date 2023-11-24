@@ -64,11 +64,6 @@ export const navListSlice = createSlice({
             state.filteredDomainlist = [...state.domainList]
             state.selectedSiteName = null
         },
-        backToMain: (state, action)=>{
-            state.selectedSiteID = null
-            // state.selectedMainMenuID = state.mainMenu[1].id
-            // navigate to site list page
-        },
         getDomainArray: (state, action)=>{
             const { newArray } = state.siteList.domains
             state.rows.push(newArray)
@@ -76,5 +71,5 @@ export const navListSlice = createSlice({
     }
 })
 
-export const { getselectedSite, backToMain, filter, initStateSiteDomain, getSelectedDomain } = navListSlice.actions
+export const { getselectedSite, filter, initStateSiteDomain, getSelectedDomain } = navListSlice.actions
 export default navListSlice.reducer

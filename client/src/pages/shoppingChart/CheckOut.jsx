@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, increment, decrement, deleteCartItem, sumCost } from '../../features/shopItemSlice'
+import { Link } from 'react-router-dom'
+import { increment, decrement, deleteCartItem, sumCost } from '../../features/shopItemSlice'
 import Typography from '@mui/material/Typography'
 import Card from '@mui/material/Card'
+import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import AddIcon from '@mui/icons-material/Add'
@@ -36,7 +38,9 @@ const CheckOut = () => {
     }
     
     return (
-        <>
+        <Container>
+            <Button size="small" variant="contained">
+            <Link to="/online-store">Continue Shopping</Link></Button>
          {currentCart && currentCart.map(item=>(
             <Card className='card-gap' elevation={0} key={item._id}>
             <CardContent sx={{width:'100%'}}> 
@@ -60,9 +64,9 @@ const CheckOut = () => {
         <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2} m={2}>
             <Typography variant="subtitle1">Total Cost :</Typography>
             <Typography variant="subtitle1" sx={{fontWeight:'bold'}}>{totalCost}</Typography>
-            <Button size="small" variant="contained" onClick={handlePayment}>Payment</Button>
+            <Button size="small" variant="contained" onClick={handlePayment}>Next</Button>
         </Stack> 
-        </> 
+        </Container>
     );
 }
  
